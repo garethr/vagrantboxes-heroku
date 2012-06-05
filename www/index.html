@@ -2,7 +2,6 @@
 <head>
   <meta charset=utf-8/>
   <title>A list of base boxes for Vagrant - Vagrantbox.es</title>
-  <link rel="stylesheet" href="/assets/css/reset.css" type="text/css" />
   <link rel="stylesheet" href="/assets/css/main.css" type="text/css" />
   <script type="text/javascript">
     var _gaq = _gaq || [];
@@ -35,6 +34,17 @@
 <p>Do you know of another base box? <a href="http://github.com/garethr/vagrantboxes-heroku">Send a pull request</a> and we'll add it to the list below.</p>
 
 <h2>Available Boxes</h2>
+
+<p>To use the available boxes just replace {title} and {url} with the information in the table below.</p>
+
+<pre>
+ <span>$ </span>gem install vagrant
+ <span>$ </span>vagrant box add {title} {url}
+ <span>$ </span>vagrant init {title}
+ <span>$ </span>vagrant up
+</pre>
+
+<p>The list of boxes needs a little tidying up and some of these may no-longer be available.</p>
 
 <table>
   <tr>
