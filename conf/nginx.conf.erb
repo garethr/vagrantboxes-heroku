@@ -17,6 +17,8 @@ http {
     listen           <%= ENV['PORT'] %>;
     server_name      localhost;
 
+    error_page  404 /404.html;
+
     location / {
       root www;
       expires 180s;
