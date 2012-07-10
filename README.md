@@ -1,4 +1,4 @@
-This repository contains the content for the Vagrantbox.es website, a
+This repository contains the content for the [Vagrantbox.es](http://www.vagrantbox.es) website, a
 list of third party base boxes for the lovely Vagrant virtualisation
 tool.
 
