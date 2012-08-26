@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>A list of base boxes for Vagrant - Vagrantbox.es</title>
+<link rel="stylesheet" href="/assets/css/main.css" type="text/css" />
+</head>
+
+<body>
+
+<a href="https://github.com/garethr/vagrantboxes-heroku"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
+
+<div id="main">
+
+  <h1><a href="/">Vagrantbox.es</a></h1>
+
+  <p><a href="http://vagrantup.com">Vagrant</a> is an amazing tool for managing virtual machines via a simple to use command line interface. With a simple <code>vagrant up</code> you can be working in a clean environment based on a standard template.</p>
+
+  <p>These standard templates are called <a href="http://vagrantup.com/v1/docs/boxes.html">base boxes</a>, and this website is simply a list of boxes people have been nice enough to make publicly available.</p>
+
+  <h2>Suggest a Box</h2>
+
+  <p>Do you know of another base box? <a href="http://github.com/garethr/vagrantboxes-heroku">Send a pull request</a> and we'll add it to the list below.</p>
+
+  <h2>Available Boxes</h2>
+
+  <p>To use the available boxes just replace {title} and {url} with the information in the table below.</p>
+
+  <pre>
+ <span>$ </span>gem install vagrant
+ <span>$ </span>vagrant box add {title} {url}
+ <span>$ </span>vagrant init {title}
+ <span>$ </span>vagrant up
+  </pre>
+
+  <p>The list of boxes has been checked on 17th July 2012.</p>
+
+  <table>
+    <% @boxes.each do |box| %>
+      <tr>
+        <th scope="row"><%= box[:name] %></th>
+        <td><%= box[:url] %></td>
+        <td><%= box[:size] %></td>
+      </tr>
+    <% end %>
+  </table>
+
+  <div id="footer">
+    <p>A project from <a href="http://morethanseven.net">Gareth Rushgrove</a>. The design of this site is heavily inspired by the lovely <a href="http://vagrantup.com">Vagrant</a> design by <a href="http://www.simonecarletti.com/">Simone Carletti</a>.</p>
+  </div>
+
+</div>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-435455-15']);
+_gaq.push(['_trackPageview']);
+_gaq.push(['_trackPageLoadTime']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+</body>
+</html>

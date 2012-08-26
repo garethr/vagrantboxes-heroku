@@ -1,0 +1,220 @@
+-
+  :name: CentOS 6.3 x86_64 minimal
+  :url: https://dl.dropbox.com/u/7225008/Vagrant/CentOS-6.3-x86_64-minimal.box
+  :size: 310MB
+
+-
+  :name: OmniOS (r151002)
+  :url: http://omnios.omniti.com/media/omnios-latest.box
+  :size: 837MB
+
+-
+  :name: Arch Linux 64 (2012-07-02)
+  :url: http://vagrant.pouss.in/archlinux_2012-07-02.box
+  :size: 283MB
+
+-
+  :name: Ubuntu 11.04 server i386
+  :url: http://dl.dropbox.com/u/7490647/talifun-ubuntu-11.04-server-i386.box
+  :size: 372MB
+
+-
+  :name: Ubuntu 11.04 server amd64
+  :url: http://dl.dropbox.com/u/7490647/talifun-ubuntu-11.04-server-amd64.box
+  :size: 390MB
+
+-
+  :name: OpenSUSE 12.1 64 puppet (until 2012-12-17)
+  :url: https://transfert.inria.fr/fichiers/42187e68fc6312db6856f07e651cd475/vagrant-opensuse-121-64.box
+  :size: 500MB
+
+-
+  :name: Scientific Linux 6 64 chefclient0.10
+  :url: http://download.frameos.org/sl6-64-chefclient-0.10.box
+  :size: 459MB
+
+-
+  :name: Scientific Linux 6 64 chefserver-0.10
+  :url: http://download.frameos.org/sl6-64-chefserver-0.10.box
+  :size: 657MB
+
+-
+  :name: CentOS 5.6 32
+  :url: http://yum.mnxsolutions.com/vagrant/centos_56_32.box
+  :size: 804MB
+
+-
+  :name: Debian Lenny 32 puppet
+  :url: http://s3-eu-west-1.amazonaws.com/glassesdirect-boxen/Debian/Debian_Lenny_32_puppet_backport.box
+  :size: 345MB
+
+-
+  :name: Debian Lenny 32
+  :url: https://s3-eu-west-1.amazonaws.com/glassesdirect-boxen/Debian/Debian_Lenny_32.box
+  :size: 351MB
+
+-
+  :name: Debian Lenny 64 puppet
+  :url: http://puppetlabs.s3.amazonaws.com/pub/Debian_Lenny_64.box
+  :size: 386MB
+
+-
+  :name: Debian Squeeze 64 rvm
+  :url: https://s3-eu-west-1.amazonaws.com/rosstimson-vagrant-boxes/Debian-Squeeze-64-rvm.box
+  :size:
+
+-
+  :name: Debian Squeeze 64
+  :url: http://puppetlabs.s3.amazonaws.com/pub/Squeeze64.box
+  :size: 540MB
+
+-
+  :name: RHEL 6 64 puppet
+  :url: http://puppetlabs.s3.amazonaws.com/pub/rhel60_64.box
+  :size: 576MB
+
+-
+  :name: CentOS 4 64 puppet
+  :url: http://puppetlabs.s3.amazonaws.com/pub/centos4_64.box
+  :size: 540MB
+
+-
+  :name: SLES 11sp1 64 puppet
+  :url: http://puppetlabs.s3.amazonaws.com/pub/sles11sp1_64.box
+  :size: 665MB
+
+-
+  :name: Ubuntu 11.10 server amd64
+  :url: http://timhuegdon.com/vagrant-boxes/Ubuntu-11.10.box
+  :size: 390MB
+
+-
+  :name: Aegir-up Aegir (Debian Stable 64-bit)
+  :url: http://ergonlogic.com/files/boxes/aegir-current.box
+  :size: 297MB
+
+-
+  :name: Aegir-up LAMP (Debian Stable 64-bit)
+  :url: http://ergonlogic.com/files/boxes/debian-LAMP-current.box
+  :size: 388MB
+
+-
+  :name: Aegir-up Debian (Stable 64-bit)
+  :url: http://ergonlogic.com/files/boxes/debian-current.box
+  :size: 283MB
+
+-
+  :name: OpenBSD 5.0 (i386)
+  :url: https://s3-eu-west-1.amazonaws.com/rosstimson-vagrant-boxes/openbsd50-i386.box
+  :size: 211MB
+
+-
+  :name: Ubuntu Oneiric 32
+  :url: http://vagrant.cedric-ziel.com/oneiric32.box
+  :size: 340MB
+
+-
+  :name: CentOS 5.7 64
+  :url: http://dl.dropbox.com/u/8072848/centos-5.7-x86_64.box
+  :size: 521MB
+
+-
+  :name: CentOS 5.6 64 puppet
+  :url: http://puppetlabs.s3.amazonaws.com/pub/centos56_64.box
+  :size: 614MB
+
+-
+  :name: Minimal CentOS 6.0
+  :url: http://dl.dropbox.com/u/9227672/CentOS-6.0-x86_64-netboot-4.1.6.box
+  :size: 362MB
+
+-
+  :name: Minimal CentOS 5.6
+  :url: http://dl.dropbox.com/u/9227672/centos-5.6-x86_64-netinstall-4.1.6.box
+  :size: 277MB
+
+-
+  :name: Archlinux 2011-08-19
+  :url: http://sourceforge.net/projects/vagrantarchlinx/files/files2011.08.19/archlinux_2011.08.19.box/download
+  :size: 565MB
+
+-
+  :name: CentOS 6
+  :url: https://vagrant-centos-6.s3.amazonaws.com/centos-6.box
+  :size: 582MB
+
+-
+  :name: Archlinux 2011.08.19 - 64
+  :url: http://ftp.heanet.ie/mirrors/sourceforge/v/project/va/vagrantarchlinx/2011.08.19/archlinux_2011.08.19.box
+  :size: 539MB
+
+-
+  :name: Gentoo 64
+  :url: http://dl.dropbox.com/u/4270274/gentoo64-0.7.box
+  :size: 735MB
+
+-
+  :name: Opscode ubuntu 10.04
+  :url: http://opscode-vagrant-boxes.s3.amazonaws.com/ubuntu10.04-gems.box
+  :size: 367MB
+
+-
+  :name: Opscode centos 5
+  :url: http://opscode-vagrant-boxes.s3.amazonaws.com/centos5-gems.box
+  :size: 458MB
+
+-
+  :name: Ubuntu Maverick 64
+  :url: http://mathie-vagrant-boxes.s3.amazonaws.com/maverick64.box
+  :size: 515MB
+
+-
+  :name: CentOS 5.5 64
+  :url: http://dl.dropbox.com/u/15307300/vagrant-0.7-centos-64-base.box
+  :size: 499MB
+
+-
+  :name: Debian squeeze 32
+  :url: http://mathie-vagrant-boxes.s3.amazonaws.com/debian_squeeze_32.box
+  :size: 397MB
+
+-
+  :name: Debian squeeze 64
+  :url: http://dl.dropbox.com/u/937870/VMs/squeeze64.box
+  :size: 264MB
+
+-
+  :name: Ubuntu lucid 32
+  :url: http://files.vagrantup.com/lucid32.box
+  :size: 261MB
+
+-
+  :name: Ubuntu lucid 64
+  :url: http://files.vagrantup.com/lucid64.box
+  :size: 280MB
+
+-
+  :name: Slackware 13.37
+  :url: http://dl.dropbox.com/u/10544201/slackware-13.37.box
+  :size: 2.2GB
+
+-
+  :name: Ubuntu precise 32
+  :url: http://files.vagrantup.com/precise32.box
+  :size: 299MB
+
+-
+  :name: Ubuntu precise 64
+  :url: http://files.vagrantup.com/precise64.box
+  :size: 323MB
+
+-
+  :name: openSuse 12.1 x64
+  :url: https://github.com/jtperry/OpenSuseVagrantBox
+  :size: 665MB
+
+-
+  :name: CentOS 5.8 x86_64
+  :url: http://putitinthepizza.com/boxes/centos58-x86_64.box
+  :size: 995MB
+
