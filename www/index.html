@@ -1,279 +1,286 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset='utf-8'>
-<title>A list of base boxes for Vagrant - Vagrantbox.es</title>
-<link rel="stylesheet" href="/assets/css/main.css" type="text/css" />
+  <meta charset="utf-8">
+  <title>A list of base boxes for Vagrant - Vagrantbox.es</title>
+  <link rel="stylesheet" href="/css/main.css" />
 </head>
-
 <body>
+  <a href="https://github.com/garethr/vagrantboxes-heroku">
+    <img style="position: absolute; top: 0; right: 0; border: 0;"
+         src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
+         alt="Fork me on GitHub"></a>
 
-<a href="https://github.com/garethr/vagrantboxes-heroku"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
+  <div id="main">
 
-<div id="main">
+    <h1><a href="/">Vagrantbox.es</a></h1>
 
-  <h1><a href="/">Vagrantbox.es</a></h1>
+    <p><a href="http://vagrantup.com">Vagrant</a> is an amazing tool for managing virtual machines via a simple to use command line interface. With a simple <code>vagrant up</code> you can be working in a clean environment based on a standard template.</p>
 
-  <p><a href="http://vagrantup.com">Vagrant</a> is an amazing tool for managing virtual machines via a simple to use command line interface. With a simple <code>vagrant up</code> you can be working in a clean environment based on a standard template.</p>
+    <p>These standard templates are called <a href="http://vagrantup.com/v1/docs/boxes.html">base boxes</a>, and this website is simply a list of boxes people have been nice enough to make publicly available.</p>
 
-  <p>These standard templates are called <a href="http://vagrantup.com/v1/docs/boxes.html">base boxes</a>, and this website is simply a list of boxes people have been nice enough to make publicly available.</p>
+    <h2>Suggest a Box</h2>
 
-  <h2>Suggest a Box</h2>
+    <p>Do you know of another base box? <a href="http://github.com/garethr/vagrantboxes-heroku">Send a pull request</a> and we'll add it to the list below.</p>
 
-  <p>Do you know of another base box? <a href="http://github.com/garethr/vagrantboxes-heroku">Send a pull request</a> and we'll add it to the list below.</p>
+    <h2>Available Boxes</h2>
 
-  <h2>Available Boxes</h2>
+    <p>To use the available boxes just replace <code>{title}</code>
+    and <code>{url}</code> with the information in the table below.</p>
 
-  <p>To use the available boxes just replace {title} and {url} with the information in the table below.</p>
+    <pre>
+<span>$ </span>gem install vagrant
+<span>$ </span>vagrant box add {title} {url}
+<span>$ </span>vagrant init {title}
+<span>$ </span>vagrant up</pre>
 
-  <pre>
- <span>$ </span>gem install vagrant
- <span>$ </span>vagrant box add {title} {url}
- <span>$ </span>vagrant init {title}
- <span>$ </span>vagrant up
-  </pre>
+    <p>The list of boxes has been checked on 17th July 2012.</p>
 
-  <p>The list of boxes has been checked on 17th July 2012.</p>
+    <ul id="boxes">
+        <li class="arch">
+          <span class="name">Arch Linux 64 (2012-07-02)</span>
+          <span class="url">http://vagrant.pouss.in/archlinux_2012-07-02.box</span>
+          <span class="size">283MB</span>
+        </li>
+        <li class="arch">
+          <span class="name">Archlinux 2011.08.19 - 64</span>
+          <span class="url">http://ftp.heanet.ie/mirrors/sourceforge/v/project/va/vagrantarchlinx/2011.08.19/archlinux_2011.08.19.box</span>
+          <span class="size">539MB</span>
+        </li>
+        <li class="arch">
+          <span class="name">Archlinux 2011-08-19</span>
+          <span class="url">http://sourceforge.net/projects/vagrantarchlinx/files/files2011.08.19/archlinux_2011.08.19.box/download</span>
+          <span class="size">565MB</span>
+        </li>
+        <li class="centos">
+          <span class="name">CentOS 5.5 64</span>
+          <span class="url">http://dl.dropbox.com/u/15307300/vagrant-0.7-centos-64-base.box</span>
+          <span class="size">499MB</span>
+        </li>
+        <li class="centos">
+          <span class="name">Minimal CentOS 6.0</span>
+          <span class="url">http://dl.dropbox.com/u/9227672/CentOS-6.0-x86_64-netboot-4.1.6.box</span>
+          <span class="size">362MB</span>
+        </li>
+        <li class="centos">
+          <span class="name">Opscode centos 5</span>
+          <span class="url">http://opscode-vagrant-boxes.s3.amazonaws.com/centos5-gems.box</span>
+          <span class="size">458MB</span>
+        </li>
+        <li class="centos">
+          <span class="name">CentOS 4 64 puppet</span>
+          <span class="url">http://puppetlabs.s3.amazonaws.com/pub/centos4_64.box</span>
+          <span class="size">540MB</span>
+        </li>
+        <li class="centos">
+          <span class="name">Minimal CentOS 5.6</span>
+          <span class="url">http://dl.dropbox.com/u/9227672/centos-5.6-x86_64-netinstall-4.1.6.box</span>
+          <span class="size">277MB</span>
+        </li>
+        <li class="centos">
+          <span class="name">CentOS 5.6 32</span>
+          <span class="url">http://yum.mnxsolutions.com/vagrant/centos_56_32.box</span>
+          <span class="size">804MB</span>
+        </li>
+        <li class="centos">
+          <span class="name">CentOS 5.6 64 puppet</span>
+          <span class="url">http://puppetlabs.s3.amazonaws.com/pub/centos56_64.box</span>
+          <span class="size">614MB</span>
+        </li>
+        <li class="centos">
+          <span class="name">CentOS 5.7 64</span>
+          <span class="url">http://dl.dropbox.com/u/8072848/centos-5.7-x86_64.box</span>
+          <span class="size">521MB</span>
+        </li>
+        <li class="centos">
+          <span class="name">CentOS 5.8 x86_64</span>
+          <span class="url">http://putitinthepizza.com/boxes/centos58-x86_64.box</span>
+          <span class="size">995MB</span>
+        </li>
+        <li class="centos">
+          <span class="name">CentOS 6</span>
+          <span class="url">https://vagrant-centos-6.s3.amazonaws.com/centos-6.box</span>
+          <span class="size">582MB</span>
+        </li>
+        <li class="centos">
+          <span class="name">CentOS 6.3 x86_64 minimal</span>
+          <span class="url">https://dl.dropbox.com/u/7225008/Vagrant/CentOS-6.3-x86_64-minimal.box</span>
+          <span class="size">310MB</span>
+        </li>
+        <li class="debian">
+          <span class="name">Aegir-up Aegir (Debian Stable 64-bit)</span>
+          <span class="url">http://ergonlogic.com/files/boxes/aegir-current.box</span>
+          <span class="size">297MB</span>
+        </li>
+        <li class="debian">
+          <span class="name">Debian Lenny 32 puppet</span>
+          <span class="url">http://s3-eu-west-1.amazonaws.com/glassesdirect-boxen/Debian/Debian_Lenny_32_puppet_backport.box</span>
+          <span class="size">345MB</span>
+        </li>
+        <li class="debian">
+          <span class="name">Debian Lenny 64 puppet</span>
+          <span class="url">http://puppetlabs.s3.amazonaws.com/pub/Debian_Lenny_64.box</span>
+          <span class="size">386MB</span>
+        </li>
+        <li class="debian">
+          <span class="name">Debian Squeeze 64</span>
+          <span class="url">http://puppetlabs.s3.amazonaws.com/pub/Squeeze64.box</span>
+          <span class="size">540MB</span>
+        </li>
+        <li class="debian">
+          <span class="name">Debian Squeeze 64 rvm</span>
+          <span class="url">https://s3-eu-west-1.amazonaws.com/rosstimson-vagrant-boxes/Debian-Squeeze-64-rvm.box</span>
+          <span class="size"></span>
+        </li>
+        <li class="debian">
+          <span class="name">Debian squeeze 32</span>
+          <span class="url">http://mathie-vagrant-boxes.s3.amazonaws.com/debian_squeeze_32.box</span>
+          <span class="size">397MB</span>
+        </li>
+        <li class="debian">
+          <span class="name">Debian squeeze 64</span>
+          <span class="url">http://dl.dropbox.com/u/937870/VMs/squeeze64.box</span>
+          <span class="size">264MB</span>
+        </li>
+        <li class="debian">
+          <span class="name">Aegir-up LAMP (Debian Stable 64-bit)</span>
+          <span class="url">http://ergonlogic.com/files/boxes/debian-LAMP-current.box</span>
+          <span class="size">388MB</span>
+        </li>
+        <li class="debian">
+          <span class="name">Debian Lenny 32</span>
+          <span class="url">https://s3-eu-west-1.amazonaws.com/glassesdirect-boxen/Debian/Debian_Lenny_32.box</span>
+          <span class="size">351MB</span>
+        </li>
+        <li class="debian">
+          <span class="name">Aegir-up Debian (Stable 64-bit)</span>
+          <span class="url">http://ergonlogic.com/files/boxes/debian-current.box</span>
+          <span class="size">283MB</span>
+        </li>
+        <li class="gentoo">
+          <span class="name">Gentoo 64</span>
+          <span class="url">http://dl.dropbox.com/u/4270274/gentoo64-0.7.box</span>
+          <span class="size">735MB</span>
+        </li>
+        <li class="omnios">
+          <span class="name">OmniOS (r151002)</span>
+          <span class="url">http://omnios.omniti.com/media/omnios-latest.box</span>
+          <span class="size">837MB</span>
+        </li>
+        <li class="openbsd">
+          <span class="name">OpenBSD 5.0 (i386)</span>
+          <span class="url">https://s3-eu-west-1.amazonaws.com/rosstimson-vagrant-boxes/openbsd50-i386.box</span>
+          <span class="size">211MB</span>
+        </li>
+        <li class="redhat">
+          <span class="name">RHEL 6 64 puppet</span>
+          <span class="url">http://puppetlabs.s3.amazonaws.com/pub/rhel60_64.box</span>
+          <span class="size">576MB</span>
+        </li>
+        <li class="sl">
+          <span class="name">Scientific Linux 6 64 chefclient0.10</span>
+          <span class="url">http://download.frameos.org/sl6-64-chefclient-0.10.box</span>
+          <span class="size">459MB</span>
+        </li>
+        <li class="sl">
+          <span class="name">Scientific Linux 6 64 chefserver-0.10</span>
+          <span class="url">http://download.frameos.org/sl6-64-chefserver-0.10.box</span>
+          <span class="size">657MB</span>
+        </li>
+        <li class="slackware">
+          <span class="name">Slackware 13.37</span>
+          <span class="url">http://dl.dropbox.com/u/10544201/slackware-13.37.box</span>
+          <span class="size">2.2GB</span>
+        </li>
+        <li class="suse">
+          <span class="name">SLES 11sp1 64 puppet</span>
+          <span class="url">http://puppetlabs.s3.amazonaws.com/pub/sles11sp1_64.box</span>
+          <span class="size">665MB</span>
+        </li>
+        <li class="suse">
+          <span class="name">OpenSUSE 12.1 64 puppet (until 2012-12-17)</span>
+          <span class="url">https://transfert.inria.fr/fichiers/42187e68fc6312db6856f07e651cd475/vagrant-opensuse-121-64.box</span>
+          <span class="size">500MB</span>
+        </li>
+        <li class="suse">
+          <span class="name">openSuse 12.1 x64</span>
+          <span class="url">https://github.com/jtperry/OpenSuseVagrantBox</span>
+          <span class="size">665MB</span>
+        </li>
+        <li class="ubuntu">
+          <span class="name">Ubuntu 11.10 server amd64</span>
+          <span class="url">http://timhuegdon.com/vagrant-boxes/Ubuntu-11.10.box</span>
+          <span class="size">390MB</span>
+        </li>
+        <li class="ubuntu">
+          <span class="name">Ubuntu 11.04 server i386</span>
+          <span class="url">http://dl.dropbox.com/u/7490647/talifun-ubuntu-11.04-server-i386.box</span>
+          <span class="size">372MB</span>
+        </li>
+        <li class="ubuntu">
+          <span class="name">Ubuntu 11.04 server amd64</span>
+          <span class="url">http://dl.dropbox.com/u/7490647/talifun-ubuntu-11.04-server-amd64.box</span>
+          <span class="size">390MB</span>
+        </li>
+        <li class="ubuntu">
+          <span class="name">Ubuntu Maverick 64</span>
+          <span class="url">http://mathie-vagrant-boxes.s3.amazonaws.com/maverick64.box</span>
+          <span class="size">515MB</span>
+        </li>
+        <li class="ubuntu">
+          <span class="name">Ubuntu Oneiric 32</span>
+          <span class="url">http://vagrant.cedric-ziel.com/oneiric32.box</span>
+          <span class="size">340MB</span>
+        </li>
+        <li class="ubuntu">
+          <span class="name">Ubuntu lucid 32</span>
+          <span class="url">http://files.vagrantup.com/lucid32.box</span>
+          <span class="size">261MB</span>
+        </li>
+        <li class="ubuntu">
+          <span class="name">Ubuntu lucid 64</span>
+          <span class="url">http://files.vagrantup.com/lucid64.box</span>
+          <span class="size">280MB</span>
+        </li>
+        <li class="ubuntu">
+          <span class="name">Ubuntu precise 32</span>
+          <span class="url">http://files.vagrantup.com/precise32.box</span>
+          <span class="size">299MB</span>
+        </li>
+        <li class="ubuntu">
+          <span class="name">Ubuntu precise 64</span>
+          <span class="url">http://files.vagrantup.com/precise64.box</span>
+          <span class="size">323MB</span>
+        </li>
+        <li class="ubuntu">
+          <span class="name">Opscode ubuntu 10.04</span>
+          <span class="url">http://opscode-vagrant-boxes.s3.amazonaws.com/ubuntu10.04-gems.box</span>
+          <span class="size">367MB</span>
+        </li>
+    </ul>
 
-  <table>
-      <tr>
-        <th scope="row">CentOS 6.3 x86_64 minimal</th>
-        <td>https://dl.dropbox.com/u/7225008/Vagrant/CentOS-6.3-x86_64-minimal.box</td>
-        <td>310MB</td>
-      </tr>
-      <tr>
-        <th scope="row">OmniOS (r151002)</th>
-        <td>http://omnios.omniti.com/media/omnios-latest.box</td>
-        <td>837MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Arch Linux 64 (2012-07-02)</th>
-        <td>http://vagrant.pouss.in/archlinux_2012-07-02.box</td>
-        <td>283MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Ubuntu 11.04 server i386</th>
-        <td>http://dl.dropbox.com/u/7490647/talifun-ubuntu-11.04-server-i386.box</td>
-        <td>372MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Ubuntu 11.04 server amd64</th>
-        <td>http://dl.dropbox.com/u/7490647/talifun-ubuntu-11.04-server-amd64.box</td>
-        <td>390MB</td>
-      </tr>
-      <tr>
-        <th scope="row">OpenSUSE 12.1 64 puppet (until 2012-12-17)</th>
-        <td>https://transfert.inria.fr/fichiers/42187e68fc6312db6856f07e651cd475/vagrant-opensuse-121-64.box</td>
-        <td>500MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Scientific Linux 6 64 chefclient0.10</th>
-        <td>http://download.frameos.org/sl6-64-chefclient-0.10.box</td>
-        <td>459MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Scientific Linux 6 64 chefserver-0.10</th>
-        <td>http://download.frameos.org/sl6-64-chefserver-0.10.box</td>
-        <td>657MB</td>
-      </tr>
-      <tr>
-        <th scope="row">CentOS 5.6 32</th>
-        <td>http://yum.mnxsolutions.com/vagrant/centos_56_32.box</td>
-        <td>804MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Debian Lenny 32 puppet</th>
-        <td>http://s3-eu-west-1.amazonaws.com/glassesdirect-boxen/Debian/Debian_Lenny_32_puppet_backport.box</td>
-        <td>345MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Debian Lenny 32</th>
-        <td>https://s3-eu-west-1.amazonaws.com/glassesdirect-boxen/Debian/Debian_Lenny_32.box</td>
-        <td>351MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Debian Lenny 64 puppet</th>
-        <td>http://puppetlabs.s3.amazonaws.com/pub/Debian_Lenny_64.box</td>
-        <td>386MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Debian Squeeze 64 rvm</th>
-        <td>https://s3-eu-west-1.amazonaws.com/rosstimson-vagrant-boxes/Debian-Squeeze-64-rvm.box</td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">Debian Squeeze 64</th>
-        <td>http://puppetlabs.s3.amazonaws.com/pub/Squeeze64.box</td>
-        <td>540MB</td>
-      </tr>
-      <tr>
-        <th scope="row">RHEL 6 64 puppet</th>
-        <td>http://puppetlabs.s3.amazonaws.com/pub/rhel60_64.box</td>
-        <td>576MB</td>
-      </tr>
-      <tr>
-        <th scope="row">CentOS 4 64 puppet</th>
-        <td>http://puppetlabs.s3.amazonaws.com/pub/centos4_64.box</td>
-        <td>540MB</td>
-      </tr>
-      <tr>
-        <th scope="row">SLES 11sp1 64 puppet</th>
-        <td>http://puppetlabs.s3.amazonaws.com/pub/sles11sp1_64.box</td>
-        <td>665MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Ubuntu 11.10 server amd64</th>
-        <td>http://timhuegdon.com/vagrant-boxes/Ubuntu-11.10.box</td>
-        <td>390MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Aegir-up Aegir (Debian Stable 64-bit)</th>
-        <td>http://ergonlogic.com/files/boxes/aegir-current.box</td>
-        <td>297MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Aegir-up LAMP (Debian Stable 64-bit)</th>
-        <td>http://ergonlogic.com/files/boxes/debian-LAMP-current.box</td>
-        <td>388MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Aegir-up Debian (Stable 64-bit)</th>
-        <td>http://ergonlogic.com/files/boxes/debian-current.box</td>
-        <td>283MB</td>
-      </tr>
-      <tr>
-        <th scope="row">OpenBSD 5.0 (i386)</th>
-        <td>https://s3-eu-west-1.amazonaws.com/rosstimson-vagrant-boxes/openbsd50-i386.box</td>
-        <td>211MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Ubuntu Oneiric 32</th>
-        <td>http://vagrant.cedric-ziel.com/oneiric32.box</td>
-        <td>340MB</td>
-      </tr>
-      <tr>
-        <th scope="row">CentOS 5.7 64</th>
-        <td>http://dl.dropbox.com/u/8072848/centos-5.7-x86_64.box</td>
-        <td>521MB</td>
-      </tr>
-      <tr>
-        <th scope="row">CentOS 5.6 64 puppet</th>
-        <td>http://puppetlabs.s3.amazonaws.com/pub/centos56_64.box</td>
-        <td>614MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Minimal CentOS 6.0</th>
-        <td>http://dl.dropbox.com/u/9227672/CentOS-6.0-x86_64-netboot-4.1.6.box</td>
-        <td>362MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Minimal CentOS 5.6</th>
-        <td>http://dl.dropbox.com/u/9227672/centos-5.6-x86_64-netinstall-4.1.6.box</td>
-        <td>277MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Archlinux 2011-08-19</th>
-        <td>http://sourceforge.net/projects/vagrantarchlinx/files/files2011.08.19/archlinux_2011.08.19.box/download</td>
-        <td>565MB</td>
-      </tr>
-      <tr>
-        <th scope="row">CentOS 6</th>
-        <td>https://vagrant-centos-6.s3.amazonaws.com/centos-6.box</td>
-        <td>582MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Archlinux 2011.08.19 - 64</th>
-        <td>http://ftp.heanet.ie/mirrors/sourceforge/v/project/va/vagrantarchlinx/2011.08.19/archlinux_2011.08.19.box</td>
-        <td>539MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Gentoo 64</th>
-        <td>http://dl.dropbox.com/u/4270274/gentoo64-0.7.box</td>
-        <td>735MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Opscode ubuntu 10.04</th>
-        <td>http://opscode-vagrant-boxes.s3.amazonaws.com/ubuntu10.04-gems.box</td>
-        <td>367MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Opscode centos 5</th>
-        <td>http://opscode-vagrant-boxes.s3.amazonaws.com/centos5-gems.box</td>
-        <td>458MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Ubuntu Maverick 64</th>
-        <td>http://mathie-vagrant-boxes.s3.amazonaws.com/maverick64.box</td>
-        <td>515MB</td>
-      </tr>
-      <tr>
-        <th scope="row">CentOS 5.5 64</th>
-        <td>http://dl.dropbox.com/u/15307300/vagrant-0.7-centos-64-base.box</td>
-        <td>499MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Debian squeeze 32</th>
-        <td>http://mathie-vagrant-boxes.s3.amazonaws.com/debian_squeeze_32.box</td>
-        <td>397MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Debian squeeze 64</th>
-        <td>http://dl.dropbox.com/u/937870/VMs/squeeze64.box</td>
-        <td>264MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Ubuntu lucid 32</th>
-        <td>http://files.vagrantup.com/lucid32.box</td>
-        <td>261MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Ubuntu lucid 64</th>
-        <td>http://files.vagrantup.com/lucid64.box</td>
-        <td>280MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Slackware 13.37</th>
-        <td>http://dl.dropbox.com/u/10544201/slackware-13.37.box</td>
-        <td>2.2GB</td>
-      </tr>
-      <tr>
-        <th scope="row">Ubuntu precise 32</th>
-        <td>http://files.vagrantup.com/precise32.box</td>
-        <td>299MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Ubuntu precise 64</th>
-        <td>http://files.vagrantup.com/precise64.box</td>
-        <td>323MB</td>
-      </tr>
-      <tr>
-        <th scope="row">openSuse 12.1 x64</th>
-        <td>https://github.com/jtperry/OpenSuseVagrantBox</td>
-        <td>665MB</td>
-      </tr>
-      <tr>
-        <th scope="row">CentOS 5.8 x86_64</th>
-        <td>http://putitinthepizza.com/boxes/centos58-x86_64.box</td>
-        <td>995MB</td>
-      </tr>
-  </table>
+    <div id="footer">
+      <p>
+        A project from <a href="http://morethanseven.net">Gareth Rushgrove</a>.
+        The design of this site is heavily inspired by the lovely
+        <a href="http://vagrantup.com">Vagrant</a> design by
+        <a href="http://www.simonecarletti.com/">Simone Carletti</a>.
+      </p>
+    </div>
 
-  <div id="footer">
-    <p>A project from <a href="http://morethanseven.net">Gareth Rushgrove</a>. The design of this site is heavily inspired by the lovely <a href="http://vagrantup.com">Vagrant</a> design by <a href="http://www.simonecarletti.com/">Simone Carletti</a>.</p>
   </div>
+  <script src="/js/main.js"></script>
+  <script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-435455-15']);
+  _gaq.push(['_trackPageview']);
+  _gaq.push(['_trackPageLoadTime']);
 
-</div>
-<script type="text/javascript">
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-435455-15']);
-_gaq.push(['_trackPageview']);
-_gaq.push(['_trackPageLoadTime']);
-
-(function() {
-  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
-</script>
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
 </body>
 </html>
