@@ -3,6 +3,7 @@ GEM
   specs:
     directory_watcher (1.4.1)
     redis (2.2.2)
+    sass (3.2.1)
     slop (2.1.0)
     stasis (0.1.23)
       directory_watcher (~> 1.4.1)
@@ -17,4 +18,5 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  sass
   stasis
