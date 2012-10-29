@@ -2,7 +2,7 @@
 <head>
   <meta charset=utf-8/>
   <title>A list of base boxes for Vagrant - Vagrantbox.es</title>
-  <link rel="stylesheet" href="/assets/css/main.css" type="text/css" />
+  <link rel="stylesheet" href="assets/css/main.css" type="text/css" />
   <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-435455-15']);
@@ -15,6 +15,7 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
   </script>
+  <script src="assets/sorttable.js"></script>
 </head>
 
 <body>
@@ -46,13 +47,19 @@
 
 <p>The list of boxes was last updated on October 29th, 2012.</p>
 
-<table>
+<p><b>NEW</b>: Table is sortable by clicking on the column headers.</p>
+
+<table class="sortable">
+  <thead>
+    <tr><th>Name</th><th>URL</th><th class="sorttable_numeric">Size</th></tr>
+  </thead>
+  <tbody>
   <tr>
     <th scope="row">FreeBSD 9.1 amd64 - ZFS on root (Puppet, Chef, VirtualBox 4.1.22)</th>
     <td>https://github.com/downloads/xironix/freebsd-vagrant/freebsd_amd64-zfs.box</td>
     <td>298MB</td>
   </tr>
-   <tr>
+  <tr>
     <th scope="row">Ubuntu Server 12.04 amd64 (with Puppet, Chef and VirtualBox 4.2.1)</th>
     <td>https://dl.dropbox.com/u/1543052/Boxes/UbuntuServer12.04amd64.box</td>
     <td>267MB</td>
@@ -290,7 +297,7 @@
   <tr>
     <th scope="row">Slackware 13.37</th>
     <td>http://dl.dropbox.com/u/10544201/slackware-13.37.box</td>
-    <td>2.2GB</td>
+    <td>2200MB</td>
   </tr>
   <tr>
     <th scope="row">Ubuntu precise 32</th>
@@ -317,13 +324,13 @@
     <td>https://dl.dropbox.com/u/17738575/CentOS-5.8-x86_64.box</td>
     <td>957MB</td>
   </tr>
-    <tr>
+  <tr>
     <th scope="row">Ubuntu 12.04.1 LTS x86_64 (Guest Additions 4.1.18)</th>
     <td>http://dl.dropbox.com/u/1537815/precise64.box</td>
     <td>568MB</td>
   </tr>
   <tr>
-    <th scope="row">Ubuntu precise 64 (Ruby 1.9.3 & Chef 10.12)</th>
+    <th scope="row">Ubuntu precise 64 (Ruby 1.9.3 &amp; Chef 10.12)</th>
     <td>https://dl.dropbox.com/u/14292474/vagrantboxes/precise64-ruby-1.9.3-p194.box</td>
     <td>892MB</td>
   </tr>
@@ -332,12 +339,13 @@
     <td>https://github.com/downloads/roderik/VagrantQuantal64Box/quantal64.box</td>
     <td>402MB</td>
   </tr>
+  </tbody>
 </table>
 
 <div id="footer">
   <p>A project from <a href="http://morethanseven.net">Gareth Rushgrove</a>. The design of this site is heavily inspired by the lovely <a href="http://vagrantup.com">Vagrant</a> design by <a href="http://www.simonecarletti.com/">Simone Carletti</a>.</p>
 </div>
 
-</div>
+  </div>
 
-</body>
+  </body>
