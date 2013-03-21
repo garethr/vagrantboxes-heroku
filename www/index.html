@@ -16,6 +16,18 @@
     })();
   </script>
   <script src="assets/sorttable.js"></script>
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+  <script>
+   $(document).ready(function() {
+    $("td").each(function(i, td) {
+     var text = $(td).text();
+     if(text.indexOf("http") == 0) {
+      $(td).html("<a href='" + text + "'>" + text + "</a>");
+     }
+    });
+   });
+  </script>
 </head>
 
 <body>
