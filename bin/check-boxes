@@ -29,7 +29,7 @@ grep -R '\.box' "${filename}" |
     cut -d '>' -f 2 |
     cut -d '<' -f 1 |
     while read box_url; do
-        raw=$(curl -sL -m 1 -w "%{http_code}:%{url_effective}"  "${box_url}" -o /dev/null)
+        raw=$(curl -sL --head -w "%{http_code}:%{url_effective}"  "${box_url}" -o /dev/null)
         http_code=$(echo "${raw}" | cut -d : -f 1)
         url_effective=$(echo "${raw}" | cut -d : -f 2-)
 
