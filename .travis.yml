@@ -1,2 +1,9 @@
 language: ruby
 script: ''
+deploy:
+  provider: heroku
+  api_key:
+    secure: n60NQc+cWCWAMctc3rsLvz7Tdo4KVCpBI4Jb2Al9UMBEcK4kDfAArkRGkz6n50vj5hpw4i2RVYaEXovhGB5QRDQZvoedqrAWt9sA4ALUdUKGSnr1rgLsCbXfAOewljP7xujk0aaM9uNfSrulnY+FEzEr078y2GvbT62egubJW8A=
+  app: vagrantboxes
+  on:
+    repo: garethr/vagrantboxes-heroku
