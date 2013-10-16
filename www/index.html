@@ -1,955 +1,966 @@
-<head>
 <!DOCTYPE html>
-  <meta charset="utf-8">
-  <title>A list of base boxes for Vagrant - Vagrantbox.es</title>
-  <link rel="stylesheet" href="assets/css/main.css" type="text/css" />
-  <script src="assets/sorttable.js"></script>
-  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-  <script src="assets/ZeroClipboard.min.js"></script>
-  <script type='text/javascript' src='assets/jquery.tipsy.js'></script>
-  <link rel="stylesheet" href="assets/css/tipsy.css" type="text/css">
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>A list of base boxes for Vagrant - Vagrantbox.es</title>
+    <link rel="stylesheet" href="assets/css/main.css" type="text/css" />
+    <script src="assets/sorttable.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="assets/ZeroClipboard.min.js"></script>
+    <script type='text/javascript' src='assets/jquery.tipsy.js'></script>
+    <link rel="stylesheet" href="assets/css/tipsy.css" type="text/css">
 
-  <script>
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-435455-15']);
-    _gaq.push(['_trackPageview']);
-    _gaq.push(['_trackPageLoadTime']);
+    <script>
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-435455-15']);
+      _gaq.push(['_trackPageview']);
+      _gaq.push(['_trackPageLoadTime']);
 
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
 
-    ZeroClipboard.setDefaults({moviePath: 'assets/ZeroClipboard.swf'});
+      ZeroClipboard.setDefaults({moviePath: 'assets/ZeroClipboard.swf'});
 
-    $(document).ready(function() {
-      $('td').each(function(i, e) {
-        var content = $(e).html();
-        if(content.indexOf('http') == 0) {
-          var url = content;
-          content = '<button class="zeroclipboard-button" data-clipboard-text="' + url + '" trigger-title="Done" title="Copy to clipboard">Copy</button> ' + url;
-          $(e).html(content);
-        }
+      $(document).ready(function() {
+        $('td').each(function(i, e) {
+          var content = $(e).html();
+          if(content.indexOf('http') == 0) {
+            var url = content;
+            content = '<button class="zeroclipboard-button" data-clipboard-text="' + url + '" trigger-title="Done" title="Copy to clipboard">Copy</button> ' + url;
+            $(e).html(content);
+          }
+        });
+
+        var clip = new ZeroClipboard($('.zeroclipboard-button'));
+        clip.on('load', function(client, args) {
+          $(client.htmlBridge).tipsy();
+        });
+
+        clip.on('noflash wrongflash', function(client, args) {
+          $('.zeroclipboard-button').hide();
+        });
+
+        clip.on('complete', function(client, args) {
+          var b = $(client.htmlBridge);
+          b.prop('title', $(this).attr('trigger-title'));
+          b.tipsy('show');
+        });
+
+        $(window).resize(function() {
+          clip.reposition();
+        });
       });
+    </script>
+    <style>
+    .zeroclipboard-button {
+        text-align:center;
+        background-color: #eeeeee;
+        border: 1px solid gray;
+      }
 
-      var clip = new ZeroClipboard($('.zeroclipboard-button'));
-      clip.on('load', function(client, args) {
-        $(client.htmlBridge).tipsy();
-      });
+      .zeroclipboard-button.zeroclipboard-is-hover { background-color: #dddddd; }
+      .zeroclipboard-button.zeroclipboard-is-active { background-color: #aaaaaa; }
+    </style>
+  </head>
 
-      clip.on('noflash wrongflash', function(client, args) {
-        $('.zeroclipboard-button').hide();
-      });
+  <body>
+    <a href="https://github.com/garethr/vagrantboxes-heroku"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
 
-      clip.on('complete', function(client, args) {
-        var b = $(client.htmlBridge);
-        b.prop('title', $(this).attr('trigger-title'));
-        b.tipsy('show');
-      });
+    <div id="main">
+      <h1><a href="/">Vagrantbox.es</a></h1>
 
-      $(window).resize(function() {
-        clip.reposition();
-      });
-    });
-  </script>
-  <style>
-   .zeroclipboard-button {
-      text-align:center;
-      background-color: #eeeeee;
-      border: 1px solid gray;
-    }
+      <p><a href="http://vagrantup.com">Vagrant</a> is an amazing tool for managing virtual machines via a simple to use command line interface. With a simple <code>vagrant up</code> you can be working in a clean environment based on a standard template.</p>
 
-    .zeroclipboard-button.zeroclipboard-is-hover { background-color: #dddddd; }
-    .zeroclipboard-button.zeroclipboard-is-active { background-color: #aaaaaa; }
-  </style>
-</head>
+      <p>These standard templates are called <a href="http://docs.vagrantup.com/v2/boxes.html">base boxes</a>, and this website is simply a list of boxes people have been nice enough to make publicly available.</p>
 
-<body>
+      <h2>Suggest a Box</h2>
 
-  <a href="https://github.com/garethr/vagrantboxes-heroku"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
+      <p>Do you know of another base box? <a href="http://github.com/garethr/vagrantboxes-heroku">Send a pull request</a> and we'll add it to the list below.</p>
 
-  <div id="main">
+      <h2>Available Boxes</h2>
 
-    <h1><a href="/">Vagrantbox.es</a></h1>
+      <p>To use the available boxes just replace {title} and {url} with the information in the table below.</p>
 
-    <p><a href="http://vagrantup.com">Vagrant</a> is an amazing tool for managing virtual machines via a simple to use command line interface. With a simple <code>vagrant up</code> you can be working in a clean environment based on a standard template.</p>
+      <pre>
+        <span>$ </span>vagrant box add {title} {url}
+        <span>$ </span>vagrant init {title}
+        <span>$ </span>vagrant up
+      </pre>
 
-    <p>These standard templates are called <a href="http://docs.vagrantup.com/v2/boxes.html">base boxes</a>, and this website is simply a list of boxes people have been nice enough to make publicly available.</p>
+      <p>The list of boxes was last updated on October 7th, 2013.</p>
 
-    <h2>Suggest a Box</h2>
-
-    <p>Do you know of another base box? <a href="http://github.com/garethr/vagrantboxes-heroku">Send a pull request</a> and we'll add it to the list below.</p>
-
-    <h2>Available Boxes</h2>
-
-    <p>To use the available boxes just replace {title} and {url} with the information in the table below.</p>
-
-<pre>
- <span>$ </span>vagrant box add {title} {url}
- <span>$ </span>vagrant init {title}
- <span>$ </span>vagrant up
-</pre>
-
-    <p>The list of boxes was last updated on October 7th, 2013.</p>
-
-    <table class="sortable">
-      <thead>
-        <tr><th>Name</th><th>Provider</th><th>URL</th><th class="sorttable_numeric">Size</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">OpenBSD 5.3 64-bit (Vagrant 1.2)</th>
-          <td>VirtualBox</td>
-          <td>https://dl.dropboxusercontent.com/u/12089300/VirtualBox/openbsd53_amd64_vagrant12.box</td>
-          <td>296MB</td>
-        </tr>
-        <tr>
-          <th scope="row">OpenBSD 5.3 64-bit</th>
-          <td>VirtualBox</td>
-          <td>https://dl.dropboxusercontent.com/u/12089300/VirtualBox/openbsd53_amd64.box</td>
-          <td>303MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Aegir-up Aegir (Debian Stable 64-bit)  </th>
-          <td>VirtualBox</td>
-          <td>http://ergonlogic.com/files/boxes/aegir-current.box</td>
-          <td>297MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Aegir-up Debian (Stable 64-bit)</th>
-          <td>VirtualBox</td>
-          <td>http://ergonlogic.com/files/boxes/debian-current.box</td>
-          <td>283MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Aegir-up LAMP (Debian Stable 64-bit)</th>
-          <td>VirtualBox</td>
-          <td>http://ergonlogic.com/files/boxes/debian-LAMP-current.box</td>
-          <td>388MB</td>
-        </tr>
-        <tr>
-          <th scope="row">AppScale 1.11.0 (Ubuntu Lucid 64-bit)</th>
-          <td>VirtualBox</td>
-          <td>http://download.appscale.com/download/AppScale%201.11.0%20VirtualBox%20Lucid%20Image</td>
-          <td>1900 MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Arch Linux 64 (2013-08-01)</th>
-          <td>VirtualBox</td>
-          <td>https://dl.dropboxusercontent.com/u/31112574/arch64-20130801.box</td>
-          <td>578MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Arch Linux x86_64 (2013-08)</th>
-          <td>VirtualBox</td>
-          <td>https://googledrive.com/host/0B_BLFE4aPn5zUVpyaHdLanVnMTg/vagrant-archlinux-2013-8.box</td>
-          <td>394MB</td>
-        </tr>
-        <tr>
-          <th scope="row">
+      <table class="sortable">
+        <thead>
+          <tr>
+            <th class=" sorttable_sorted">Name<span id="sorttable_sortfwdind">&nbsp;▾</span></th>
+            <th class="">Provider</th>
+            <th class="">URL</th>
+            <th class="sorttable_numeric">Size</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Aegir-up Aegir (Debian Stable 64-bit)</th>
+            <td>VirtualBox</td>
+            <td>http://ergonlogic.com/files/boxes/aegir-current.box</td>
+            <td>297MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Aegir-up Debian (Stable 64-bit)</th>
+            <td>VirtualBox</td>
+            <td>http://ergonlogic.com/files/boxes/debian-current.box</td>
+            <td>283MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Aegir-up LAMP (Debian Stable 64-bit)</th>
+            <td>VirtualBox</td>
+            <td>http://ergonlogic.com/files/boxes/debian-LAMP-current.box</td>
+            <td>388MB</td>
+          </tr>
+          <tr>
+            <th scope="row">AppScale 1.11.0 (Ubuntu Lucid 64-bit)</th>
+            <td>VirtualBox</td>
+            <td>http://download.appscale.com/download/AppScale%201.11.0%20VirtualBox%20Lucid%20Image</td>
+            <td>1900 MB</td>
+          </tr>
+          <tr>
+            <th scope="row">
               Arch Linux 64 (2013-07-28)
-              <br />
+              <br>
               (Puppet and Chef installed)
-          </th>
-          <td>VirtualBox</td>
-          <td>https://dl.dropboxusercontent.com/u/9213047/arch64_2013-07-28.box</td>
-          <td>533MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Archlinux 2011-08-19</th>
-          <td>VirtualBox</td>
-          <td>http://iweb.dl.sourceforge.net/project/vagrantarchlinx/2011.08.19/archlinux_2011.08.19.box</td>
-          <td>565MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Arch Linux x64 (2013-08-17)</th>
-          <td>VirtualBox</td>
-          <td>http://vagrant.srijn.net/archlinux-x64-2013-08-17.box</td>
-          <td>575MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Archlinux 2013-08-09</th>
-          <td>VirtualBox</td>
-          <td>https://downloads.sourceforge.net/project/vagrant-archlinux/vagrant-archlinux.box</td>
-          <td>512M</td>
-        </tr>
-        <tr>
-          <th scope="row">CentOS 5.6 32</th>
-          <td>VirtualBox</td>
-          <td>http://yum.mnxsolutions.com/vagrant/centos_56_32.box</td>
-          <td>804MB</td>
-        </tr>
-        <tr>
-          <th scope="row">CentOS 5.6 64 Packages (puppet 2.6.10 &amp; chef 0.10.6 from RPM, VirtualBox 4.2.0)</th>
-          <td>VirtualBox</td>
-          <td>https://dl.dropbox.com/u/7196/vagrant/CentOS-56-x64-packages-puppet-2.6.10-chef-0.10.6.box</td>
-          <td>420MB</td>
-        </tr>
-        <tr>
-          <th scope="row">CentOS 5.7 64</th>
-          <td>VirtualBox</td>
-          <td>http://www.lyricalsoftware.com/downloads/centos-5.7-x86_64.box</td>
-          <td>521MB</td>
-        </tr>
-        <tr>
-          <th scope="row">CentOS 5.8 x86_64</th>
-          <td>VirtualBox</td>
-          <td>https://dl.dropbox.com/u/17738575/CentOS-5.8-x86_64.box</td>
-          <td>957MB</td>
-        </tr>
-        <tr>
-          <th scope="row">CentOS 5.8 x86_64 minimal + guest additions, puppet, chef</th>
-          <td>VirtualBox</td>
-          <td>http://tag1consulting.com/files/centos-5.8-x86-64-minimal.box</td>
-          <td>349MB</td>
-        </tr>
-        <tr>
-          <th scope="row">CentOS 5.9 x86_64 minimal + guest additions, puppet, chef</th>
-          <td>VirtualBox</td>
-          <td>http://tag1consulting.com/files/centos-5.9-x86-64-minimal.box</td>
-          <td>356MB</td>
-        </tr>
-        <tr>
-          <th scope="row">CentOS 6.2 32bit (puppet)</th>
-          <td>VirtualBox</td>
-          <td>https://dl.dropbox.com/sh/9rldlpj3cmdtntc/56JW-DSK35/centos-62-32bit-puppet.box</td>
-          <td>501MB</td>
-        </tr>
-        <tr>
-          <th scope="row">CentOS 6.3 32bit (puppet)</th>
-          <td>VirtualBox</td>
-          <td>https://dl.dropbox.com/sh/9rldlpj3cmdtntc/chqwU6EYaZ/centos-63-32bit-puppet.box</td>
-          <td>651MB</td>
-        </tr>
-        <tr>
-          <th scope="row">CentOS 6.3 x86_64 + Chef 10.14.2 + VirtualBox 4.1.22 (with guest additions)</th>
-          <td>VirtualBox</td>
-          <td>https://s3.amazonaws.com/itmat-public/centos-6.3-chef-10.14.2.box</td>
-          <td>445MB</td>
-        </tr>
-        <tr>
-          <th scope="row">CentOS 6.3 x86_64 minimal</th>
-          <td>VirtualBox</td>
-          <td>https://dl.dropbox.com/u/7225008/Vagrant/CentOS-6.3-x86_64-minimal.box</td>
-          <td>310MB</td>
-        </tr>
-        <tr>
-          <th scope="row">CentOS 6.4 x86_64 2013-07-01 --  With development tools (gcc, etc...). Works on VBox 4.2.14!</th>
-          <td>VirtualBox</td>
-          <td>http://shonky.info/centos64.box</td>
-          <td>519.1MB</td>
-        </tr>
-        <tr>
-          <th scope="row">CentOS 6.4 i386 Minimal (VirtualBox Guest Additions 4.2.16, Chef 11.6.0, Puppet 3.2.3)</th>
-          <td>VirtualBox</td>
-          <td>http://developer.nrel.gov/downloads/vagrant-boxes/CentOS-6.4-i386-v20130731.box</td>
-          <td>459MB</td>
-        </tr>
-        <tr>
-          <th scope="row">CentOS 6.4 x86_64 Minimal (VirtualBox Guest Additions 4.2.16, Chef 11.6.0, Puppet 3.2.3)</th>
-          <td>VirtualBox</td>
-          <td>http://developer.nrel.gov/downloads/vagrant-boxes/CentOS-6.4-x86_64-v20130731.box</td>
-          <td>494MB</td>
-        </tr>
-        <tr>
-          <th scope="row">CentOS 6.4 x86_64 Minimal VMware Fusion (VMware Tools, Chef 11.4.0, Puppet 3.1.1)</th>
-          <td>VMware</td>
-          <td>https://dl.dropbox.com/u/5721940/vagrant-boxes/vagrant-centos-6.4-x86_64-vmware_fusion.box</td>
-          <td>545.94MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Debian 6 Squeeze x64 configured according to documentation</th>
-          <td>VirtualBox</td>
-          <td>http://www.emken.biz/vagrant-boxes/debsqueeze64.box</td>
-          <td>408MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Debian 6 Squeeze x64 (VMware Fusion provider) configured according to documentation (<a href="https://github.com/jousch/vagrant-basebox-debian_squeeze64-vmware/blob/master/README.md">More Details</a>)</th>
-          <td>VMware</td>
-          <td>https://dl.dropbox.com/u/39133545/Publish/Vagrant/Provider/Vmware/vagrant-debian-squeeze64.box</td>
-          <td>334.9MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Debian squeeze 32</th>
-          <td>VirtualBox</td>
-          <td>http://mathie-vagrant-boxes.s3.amazonaws.com/debian_squeeze_32.box</td>
-          <td>397MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Debian Squeeze 6.0.6 32 - Vanilla (No Ruby, no puppet, only Chef 10.14 from omnibus installer)</th>
-          <td>VirtualBox</td>
-          <td>https://dl.dropbox.com/u/2289657/squeeze32-vanilla.box</td>
-          <td>276MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Debian squeeze 64 (French (Swiss) keyboard layout)</th>
-          <td>VirtualBox</td>
-          <td>http://dl.dropbox.com/u/937870/VMs/squeeze64.box</td>
-          <td>264MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Debian Squeeze amd64 (with Puppet, Chef and VirtualBox 4.2.1)</th>
-          <td>VirtualBox</td>
-          <td>http://f.willianfernandes.com.br/vagrant-boxes/DebianSqueeze64.box</td>
-          <td>272MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Debian Squeeze amd64 (with VirtualBox 4.2.4)</th>
-          <td>VirtualBox</td>
-          <td>http://dl.dropbox.com/u/54390273/vagrantboxes/Squeeze64_VirtualBox4.2.4.box</td>
-          <td>372MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Debian Squeeze amd64 (Chef 10.24.4, Puppet 3.1.1, VirtualBox 4.2.12)</th>
-          <td>VirtualBox</td>
-          <td>https://dl.dropboxusercontent.com/u/13054557/vagrant_boxes/debian-squeeze.box</td>
-          <td>287MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Debian Squeeze i386 6.0.7 (Chef 10.18.2, Puppet 2.6.2, VirtualBox 4.2.6, nfs-common 1.2.2)</th>
-          <td>VirtualBox</td>
-          <td>http://dl.dropbox.com/u/40989391/vagrant-boxes/debian-squeeze-i386.box</td>
-          <td>496.78MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Debian Squeeze 6.0.7 amd64 (french) with Puppet 3.1.1, Chef 11.4.0 and VirtualBox 4.2.12, built with Veewee 0.3.7 (2013/04/20)</th>
-          <td>VirtualBox</td>
-          <td>http://public.sphax3d.org/vagrant/squeeze64.box</td>
-          <td>294.19MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Debian Squeeze amd64 (Puppet 3.2.3, LXC, 2013.07.27)</th>
-          <td>Vagrant-LXC</td>
-          <td>https://dl.dropboxusercontent.com/u/67225617/lxc-vagrant/lxc-squeeze64-puppet3-2013-07-27.box</td>
-          <td>106.17MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Debian Wheezy amd64 (Puppet 3.2.3, LXC, 2013.07.27)</th>
-          <td>Vagrant-LXC</td>
-          <td>https://dl.dropboxusercontent.com/u/67225617/lxc-vagrant/lxc-wheezy64-puppet3-2013-07-27.box</td>
-          <td>102.5MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Debian Wheezy amd64 (Puppet, VirtualBox)</th>
-          <td>VirtualBox</td>
-          <td>https://dl.dropboxusercontent.com/u/86066173/debian-wheezy.box</td>
-          <td>455MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Debian Wheezy 7.1 amd64 (french) with Chef 11.4.4 and VirtualBox 4.1.18 (2013/06/19)</th>
-          <td>VirtualBox</td>
-          <td>http://downloads.shadoware.org/wheezy64.box</td>
-          <td>388MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Fedora 17 i386 (Puppet, Chef, VirtualBox 4.2.6)</th>
-          <td>VirtualBox</td>
-          <td>http://dl.dropbox.com/u/6002490/vagrant/beefymiracle32.box</td>
-          <td>804.25MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Fedora 17 x86_64 (Puppet, Chef, VirtualBox 4.2.6)</th>
-          <td>VirtualBox</td>
-          <td>http://dl.dropbox.com/u/6002490/vagrant/beefymiracle64.box</td>
-          <td>768.49MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Fedora 18 x86 Minimal (with Chef 11.4.0, VirtualBox Guest Additions 4.2.10 and rpmfusion enabled);<br>
-            md5sum 36b8aaf49421510a726b6175ee44e15b<br>
-            sha1sum d5a6a3c4ab1538105b18e6efba4d9479798a430e</th>
-          <td>VirtualBox</td>
-          <td>http://static.stasiak.at/fedora-18-x86-2.box</td>
-          <td>635MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Fedora 19 x86_64 (Puppet, VirtualBox)</th>
-          <td>VirtualBox</td>
-          <td>https://dl.dropboxusercontent.com/u/86066173/fedora-19.box</td>
-          <td>400MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Gentoo 2013.02.14 i686 (32bit) (Puppet, Chef, VirtualBox 4.2.6)</th>
-          <td>VirtualBox</td>
-          <td>https://seedrs.box.com/shared/static/6cg94mkdtuz3baoy8zl8.box</td>
-          <td>717MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Gentoo 2013.05 amd64 (Chef omnibus 11.4.4, VirtualBox 4.2.12)</th>
-          <td>VirtualBox</td>
-          <td>https://lxmx-vm.s3.amazonaws.com/vagrant/boxes/lxmx_gentoo-2013.05_chef-11.4.4.box</td>
-          <td>357MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Funtoo 2013.06 amd64 (Chef omnibus 11.4.4, VirtualBox 4.2.12)</th>
-          <td>VirtualBox</td>
-          <td>https://lxmx-vm.s3.amazonaws.com/vagrant/boxes/lxmx_funtoo-2013.06_chef-11.4.4.box</td>
-          <td>467MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Heroku Celadon Cedar</th>
-          <td>VirtualBox</td>
-          <td>http://dl.dropbox.com/u/1906634/heroku.box</td>
-          <td>555MB</td>
-        </tr>
-          <th scope="row">Kali Linux</th>
-          <td>VirtualBox</td>
-          <td>http://ftp.sliim-projects.eu/boxes/kali-linux-1.0-amd64.box</td>
-          <td>2500MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Kali Linux 1.0 i686</th>
-          <td>VirtualBox</td>
-          <td>http://dalvik.jp/vagrant/KaliLinux-1.0-en-i686.box</td>
-          <td>2346MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Minimal CentOS 5.6</th>
-          <td>VirtualBox</td>
-          <td>http://dl.dropbox.com/u/9227672/centos-5.6-x86_64-netinstall-4.1.6.box</td>
-          <td>277MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Minimal CentOS 6.0</th>
-          <td>VirtualBox</td>
-          <td>http://dl.dropbox.com/u/9227672/CentOS-6.0-x86_64-netboot-4.1.6.box</td>
-          <td>362MB</td>
-        </tr>
-        <tr>
-          <th scope="row">CentOS 6.3 32bit (Ruby 1.8.7 &amp; Chef 10.14.2)</th>
-          <td>VirtualBox</td>
-          <td>http://tom.davidson.me.uk/dev/vagrant/centos63-32.box</td>
-          <td>443MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Official Ubuntu 12.04 daily Cloud Image amd64 (VirtualBox 4.1.12)</th>
-          <td>VirtualBox</td>
-          <td>http://cloud-images.ubuntu.com/vagrant/precise/current/precise-server-cloudimg-amd64-vagrant-disk1.box</td>
-          <td>341M</td>
-        </tr>
-        <tr>
-          <th scope="row">Official Ubuntu 12.04 daily Cloud Image i386 (VirtualBox 4.1.12)</th>
-          <td>VirtualBox</td>
-          <td>http://cloud-images.ubuntu.com/vagrant/precise/current/precise-server-cloudimg-i386-vagrant-disk1.box</td>
-          <td>329M</td>
-        </tr>
-        <tr>
-          <th scope="row">Official Ubuntu 12.10 daily Cloud Image amd64 (No Guest Additions)</th>
-          <td>VirtualBox</td>
-          <td>http://cloud-images.ubuntu.com/vagrant/quantal/current/quantal-server-cloudimg-amd64-vagrant-disk1.box</td>
-          <td>298M</td>
-        </tr>
-        <tr>
-          <th scope="row">Official Ubuntu 12.10 daily Cloud Image i386 (No Guest Additions)</th>
-          <td>VirtualBox</td>
-          <td>http://cloud-images.ubuntu.com/vagrant/quantal/current/quantal-server-cloudimg-i386-vagrant-disk1.box</td>
-          <td>299M</td>
-        </tr>
-        <tr>
-          <th scope="row">Official Ubuntu 13.04 daily Cloud Image amd64 (No Guest Additions)</th>
-          <td>VirtualBox</td>
-          <td>http://cloud-images.ubuntu.com/vagrant/raring/current/raring-server-cloudimg-amd64-vagrant-disk1.box</td>
-          <td>303M</td>
-        </tr>
-        <tr>
-          <th scope="row">Official Ubuntu 13.04 daily Cloud Image i386 (No Guest Additions)</th>
-          <td>VirtualBox</td>
-          <td>http://cloud-images.ubuntu.com/vagrant/raring/current/raring-server-cloudimg-i386-vagrant-disk1.box</td>
-          <td>305M</td>
-        </tr>
-        <tr>
-          <th scope="row">Official Ubuntu 13.10 daily Cloud Image amd64 (Development release, No Guest Additions)</th>
-          <td>VirtualBox</td>
-          <td>http://cloud-images.ubuntu.com/vagrant/saucy/current/saucy-server-cloudimg-amd64-vagrant-disk1.box</td>
-          <td>309M</td>
-        </tr>
-        <tr>
-          <th scope="row">Official Ubuntu 13.10 daily Cloud Image i386 (Development release, No Guest Additions)</th>
-          <td>VirtualBox</td>
-          <td>http://cloud-images.ubuntu.com/vagrant/saucy/current/saucy-server-cloudimg-i386-vagrant-disk1.box</td>
-          <td>309M</td>
-        </tr>
-        <tr>
-          <th scope="row">Ubuntu 13.04 amd64 for vagrant-lxc with Puppet 3.1.1</th>
-          <td>Vagrant-LXC</td>
-          <td>http://dl.dropbox.com/u/13510779/lxc-raring-amd64-2013-07-12.box</td>
-          <td>92M</td>
-        </tr>
-        <tr>
-          <th scope="row">Ubuntu 12.10 amd64 for vagrant-lxc with Puppet 3.1.1</th>
-          <td>Vagrant-LXC</td>
-          <td>http://dl.dropbox.com/u/13510779/lxc-quantal-amd64-2013-07-12.box</td>
-          <td>94M</td>
-        </tr>
-        <tr>
-          <th scope="row">Ubuntu 12.04 amd64 for vagrant-lxc with Puppet 3.1.1</th>
-          <td>Vagrant-LXC</td>
-          <td>http://dl.dropbox.com/u/13510779/lxc-precise-amd64-2013-07-12.box</td>
-          <td>94M</td>
-        </tr>
-        <tr>
-          <th scope="row">Ubuntu Raring Ringtail (13.04) i386 Minimal (minimal = rvm, ruby-2.0.0p247, gem, chef, puppet)</th>
-          <td>VirtualBox</td>
-          <td>https://dl.dropboxusercontent.com/u/4387941/vagrant-boxes/ubuntu-13.04-mini-i386.box</td>
-          <td>420MB</td>
-        </tr>
-        <tr>
-          <th scope="row">OmniOS (r151002)</th>
-          <td>VirtualBox</td>
-          <td>http://omnios.omniti.com/media/omnios-latest.box</td>
-          <td>837MB</td>
-        </tr>
-        <tr>
-          <th scope="row">OpenBSD 5.2 (amd64) puppet chef pkg ports</th>
-          <td>VirtualBox</td>
-          <td>https://dl.dropbox.com/s/5ietqc3thdholuh/openbsd-52-64.box</td>
-          <td>889MB</td>
-        </tr>
-        <tr>
-          <th scope="row">OpenBSD 5.0 (amd64) puppet chef pkg ports</th>
-          <td>VirtualBox</td>
-          <td>https://github.com/downloads/stefancocora/openbsd_amd64-vagrant/openbsd50_amd64.box</td>
-          <td>279.7MB</td>
-        </tr>
-        <tr>
-          <th scope="row">OpenBSD 5.0 (i386) puppet chef pkg ports</th>
-          <td>VirtualBox</td>
-          <td>https://github.com/downloads/stefancocora/openbsd_i386-vagrant/openbsd50_i386.box</td>
-          <td>266.3MB</td>
-        </tr>
-        <tr>
-          <th scope="row">openSUSE 12.1 x64</th>
-          <td>VirtualBox</td>
-          <td>https://github.com/jtperry/OpenSuseVagrantBox</td>
-          <td>665MB</td>
-        </tr>
-        <tr>
-          <th scope="row">openSUSE 12.3 (x64) puppet chef (<a href="https://github.com/mapleoin/openSUSE-vagrant-box">Details</a>)</th>
-          <td>VirtualBox</td>
-          <td>http://bit.ly/openSUSE-12-3-virtualbox-box</td>
-          <td>527MB</td>
-        </tr>
-        <tr>
-          <th scope="row">OpenSuse 12.2 x86 (puppet)</th>
-          <td>VirtualBox</td>
-          <td>http://sourceforge.net/projects/opensusevagrant/files/12.2/opensuse-12.2-32.box/download</td>
-          <td>554MB</td>
-        </tr>
-        <tr>
-          <th scope="row">OpenSuse 12.2 x86_64 (puppet)</th>
-          <td>VirtualBox</td>
-          <td>http://sourceforge.net/projects/opensusevagrant/files/12.2/opensuse-12.2-64.box/download</td>
-          <td>552MB</td>
-        </tr>
-        <tr>
-          <th scope="row">OpenSuse 12.3 x86 (puppet)</th>
-          <td>VirtualBox</td>
-          <td>http://sourceforge.net/projects/opensusevagrant/files/12.3/opensuse-12.3-32.box/download</td>
-          <td>530MB</td>
-        </tr>
-        <tr>
-          <th scope="row">OpenSuse 12.3 x86_64 (puppet)</th>
-          <td>VirtualBox</td>
-          <td>http://sourceforge.net/projects/opensusevagrant/files/12.3/opensuse-12.3-64.box/download</td>
-          <td>628MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Opscode centos 5</th>
-          <td>VirtualBox</td>
-          <td>http://opscode-vagrant-boxes.s3.amazonaws.com/centos5-gems.box</td>
-          <td>458MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Opscode ubuntu 10.04</th>
-          <td>VirtualBox</td>
-          <td>http://opscode-vagrant-boxes.s3.amazonaws.com/ubuntu10.04-gems.box</td>
-          <td>367MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Oracle Linux 5.9 x86_64 (Chef + Puppet) (<a href="https://github.com/terrywang/vagrantboxes/blob/master/oracle59.md">src</a>)</th>
-          <td>VirtualBox</td>
-          <td>https://dl.dropbox.com/s/n5o3gfdgjc3ekhl/oracle59.box</td>
-          <td>613MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Oracle Linux 6.4 x86_64 (Chef + Puppet) (<a href="https://github.com/terrywang/vagrantboxes/blob/master/oracle64.md">src</a>)</th>
-          <td>VirtualBox</td>
-          <td>https://dl.dropbox.com/s/zmitpteca72sjpx/oracle64.box</td>
-          <td>612MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Puppetlabs CentOS 5.9 x86_64, VBox 4.2.10 (<a href="http://github.com/puppetlabs/puppet-vagrant-boxes">src</a>)</th>
-          <td>VirtualBox</td>
-          <td>http://puppet-vagrant-boxes.puppetlabs.com/centos-59-x64-vbox4210.box</td>
-          <td>530MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Puppetlabs CentOS 5.9 x86_64, VBox 4.2.10, No Puppet or Chef (<a href="http://github.com/puppetlabs/puppet-vagrant-boxes">src</a>)</th>
-          <td>VirtualBox</td>
-          <td>http://puppet-vagrant-boxes.puppetlabs.com/centos-59-x64-vbox4210-nocm.box</td>
-          <td>522MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Puppetlabs CentOS 6.4 x86_64, VBox 4.2.10 (<a href="http://github.com/puppetlabs/puppet-vagrant-boxes">src</a>)</th>
-          <td>VirtualBox</td>
-          <td>http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-vbox4210.box</td>
-          <td>523MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Puppetlabs CentOS 6.4 x86_64, VBox 4.2.10, No Puppet or Chef (<a href="http://github.com/puppetlabs/puppet-vagrant-boxes">src</a>)</th>
-          <td>VirtualBox</td>
-          <td>http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-vbox4210-nocm.box</td>
-          <td>521MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Puppetlabs Debian 6.0.7 x86_64, VBox 4.2.10 (<a href="http://github.com/puppetlabs/puppet-vagrant-boxes">src</a>)</th>
-          <td>VirtualBox</td>
-          <td>http://puppet-vagrant-boxes.puppetlabs.com/debian-607-x64-vbox4210.box</td>
-          <td>271MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Puppetlabs Debian 6.0.7 x86_64, VBox 4.2.10, No Puppet or Chef (<a href="http://github.com/puppetlabs/puppet-vagrant-boxes">src</a>)</th>
-          <td>VirtualBox</td>
-          <td>http://puppet-vagrant-boxes.puppetlabs.com/debian-607-x64-vbox4210-nocm.box</td>
-          <td>249MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Puppetlabs Debian 7.0rc1 x86_64, VBox 4.2.10 (<a href="http://github.com/puppetlabs/puppet-vagrant-boxes">src</a>)</th>
-          <td>VirtualBox</td>
-          <td>http://puppet-vagrant-boxes.puppetlabs.com/debian-70rc1-x64-vbox4210.box</td>
-          <td>302MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Puppetlabs Debian 7.0rc1 x86_64, VBox 4.2.10, No Puppet or Chef (<a href="http://github.com/puppetlabs/puppet-vagrant-boxes">src</a>)</th>
-          <td>VirtualBox</td>
-          <td>http://puppet-vagrant-boxes.puppetlabs.com/debian-70rc1-x64-vbox4210-nocm.box</td>
-          <td>281MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Puppetlabs Fedora 18 x86_64, VBox 4.2.10 (<a href="http://github.com/puppetlabs/puppet-vagrant-boxes">src</a>)</th>
-          <td>VirtualBox</td>
-          <td>http://puppet-vagrant-boxes.puppetlabs.com/fedora-18-x64-vbox4210.box</td>
-          <td>596MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Puppetlabs Fedora 18 x86_64, VBox 4.2.10, No Puppet or Chef (<a href="http://github.com/puppetlabs/puppet-vagrant-boxes">src</a>)</th>
-          <td>VirtualBox</td>
-          <td>http://puppet-vagrant-boxes.puppetlabs.com/fedora-18-x64-vbox4210-nocm.box</td>
-          <td>611MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Puppetlabs SLES 11sp1 x86_64, VBox 4.2.10 (<a href="http://github.com/puppetlabs/puppet-vagrant-boxes">src</a>)</th>
-          <td>VirtualBox</td>
-          <td>http://puppet-vagrant-boxes.puppetlabs.com/sles-11sp1-x64-vbox4210.box</td>
-          <td>519MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Puppetlabs SLES 11sp1 x86_64, VBox 4.2.10, No Puppet or Chef (<a href="http://github.com/puppetlabs/puppet-vagrant-boxes">src</a>)</th>
-          <td>VirtualBox</td>
-          <td>http://puppet-vagrant-boxes.puppetlabs.com/sles-11sp1-x64-vbox4210-nocm.box</td>
-          <td>500MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Puppetlabs Ubuntu 10.04.4 x86_64, VBox 4.2.10 (<a href="http://github.com/puppetlabs/puppet-vagrant-boxes">src</a>)</th>
-          <td>VirtualBox</td>
-          <td>http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-server-10044-x64-vbox4210.box</td>
-          <td>323MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Puppetlabs Ubuntu 10.04.4 x86_64, VBox 4.2.10, No Puppet or Chef (<a href="http://github.com/puppetlabs/puppet-vagrant-boxes">src</a>)</th>
-          <td>VirtualBox</td>
-          <td>http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-server-10044-x64-vbox4210-nocm.box</td>
-          <td>313MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Puppetlabs Ubuntu 12.04.2 x86_64, VBox 4.2.10 (<a href="http://github.com/puppetlabs/puppet-vagrant-boxes">src</a>)</th>
-          <td>VirtualBox</td>
-          <td>http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-server-12042-x64-vbox4210.box</td>
-          <td>400MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Puppetlabs Ubuntu 12.04.2 x86_64, VBox 4.2.10, No Puppet or Chef (<a href="http://github.com/puppetlabs/puppet-vagrant-boxes">src</a>)</th>
-          <td>VirtualBox</td>
-          <td>http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-server-12042-x64-vbox4210-nocm.box</td>
-          <td>352MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Scientific Linux 6 64 chefclient0.10</th>
-          <td>VirtualBox</td>
-          <td>http://download.frameos.org/sl6-64-chefclient-0.10.box</td>
-          <td>459MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Scientific Linux 6 64 chefserver-0.10</th>
-          <td>VirtualBox</td>
-          <td>http://download.frameos.org/sl6-64-chefserver-0.10.box</td>
-          <td>657MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Scientific Linux 6 64 minimal</th>
-          <td>VirtualBox</td>
-          <td>http://lyte.id.au/vagrant/sl6-64-lyte.box</td>
-          <td>376M</td>
-        </tr>
-        <tr>
-          <th scope="row">Severalnines ClusterControl, Database Cluster Deployment Scripts, VBox 4.2.10, Ubuntu 12.04 LTS (<a href="http://www.alexyu.se/content/2013/03/vagrant-box-severalnines-database-cluster-deployment-scripts">How-to</a>)</th>
-          <td>VirtualBox</td>
-          <td>https://googledrive.com/host/0B-J3zLLFd9HMLUhkckZBWi1xVlE/s9s_clustercontrol.box</td>
-          <td>390MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Slackware 13.37</th>
-          <td>VirtualBox</td>
-          <td>http://dl.dropbox.com/u/10544201/slackware-13.37.box</td>
-          <td>2200MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Ubuntu 10.04.4 LTS Lucid x86_64 (Apache 2.2.14, PHP 5.3.2, MySQL 5.1.66)</th>
-          <td>VirtualBox</td>
-          <td>https://dl.dropbox.com/u/14741389/vagrantboxes/lucid64-lamp.box</td>
-          <td>343MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Ubuntu 11.04 server amd64</th>
-          <td>VirtualBox</td>
-          <td>http://dl.dropbox.com/u/7490647/talifun-ubuntu-11.04-server-amd64.box</td>
-          <td>390MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Ubuntu 11.04 server i386</th>
-          <td>VirtualBox</td>
-          <td>http://dl.dropbox.com/u/7490647/talifun-ubuntu-11.04-server-i386.box</td>
-          <td>372MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Ubuntu 12.04 server amd64 (Drupal Ready)</th>
-          <td>VirtualBox</td>
-          <td>http://ubuntuone.com/790qH5nb7cFe2CLQkGiTpz</td>
-          <td>702MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Ubuntu 12.04.1 LTS x86_64 (Guest Additions 4.1.18)</th>
-          <td>VirtualBox</td>
-          <td>http://dl.dropbox.com/u/1537815/precise64.box</td>
-          <td>568MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Ubuntu 12.04.2 Server i386 with VirtualBox Guest Additions v4.2.6, Chef Omnibus 11</th>
-          <td>VirtualBox</td>
-          <td>http://grahamc.com/vagrant/ubuntu-12.04.2-i386-chef-11-omnibus.box</td>
-          <td>428M</td>
-        </tr>
-        <tr>
-          <th scope="row">Ubuntu 12.04.2 Server amd64 for VMWare Fusion and Chef Omnibus 11</th>
-          <td>VMware</td>
-          <td>http://grahamc.com/vagrant/ubuntu-12.04.2-server-amd64-vmware-fusion.box</td>
-          <td>446M</td>
-        </tr>
-        <tr>
-          <th scope="row">Ubuntu 12.10 Quantal x86_64 (Guest Additions 4.2.2)</th>
-          <td>VirtualBox</td>
-          <td>https://github.com/downloads/roderik/VagrantQuantal64Box/quantal64.box</td>
-          <td>402MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Ubuntu lucid 32</th>
-          <td>VirtualBox</td>
-          <td>http://files.vagrantup.com/lucid32.box</td>
-          <td>261MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Ubuntu lucid 64</th>
-          <td>VirtualBox</td>
-          <td>http://files.vagrantup.com/lucid64.box</td>
-          <td>280MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Ubuntu Lucid32 lampp, mongodb, git</th>
-          <td>VirtualBox</td>
-          <td>http://www.hitarthindia.com/VM/lampp-mongo-git.box</td>
-          <td>566MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Ubuntu Lucid32 lampp, mongodb, git, lithium, rockmongo</th>
-          <td>VirtualBox</td>
-          <td>http://www.hitarthindia.com/VM/lampp-mongo-git-lithium-rock.box</td>
-          <td>568MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Ubuntu Maverick 64</th>
-          <td>VirtualBox</td>
-          <td>http://mathie-vagrant-boxes.s3.amazonaws.com/maverick64.box</td>
-          <td>515MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Ubuntu precise 32 VirtualBox</th>
-          <td>VirtualBox</td>
-          <td>http://files.vagrantup.com/precise32.box</td>
-          <td>299MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Ubuntu precise 64 VirtualBox</th>
-          <td>VirtualBox</td>
-          <td>http://files.vagrantup.com/precise64.box</td>
-          <td>323MB</td>
-        </tr>
-        <tr>
+            </th>
+            <td>VirtualBox</td>
+            <td>https://dl.dropboxusercontent.com/u/9213047/arch64_2013-07-28.box</td>
+            <td>533MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Arch Linux 64 (2013-08-01)</th>
+            <td>VirtualBox</td>
+            <td>https://dl.dropboxusercontent.com/u/31112574/arch64-20130801.box</td>
+            <td>578MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Arch Linux x64 (2013-08-17)</th>
+            <td>VirtualBox</td>
+            <td>http://vagrant.srijn.net/archlinux-x64-2013-08-17.box</td>
+            <td>575MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Arch Linux x86_64 (2013-08)</th>
+            <td>VirtualBox</td>
+            <td>https://googledrive.com/host/0B_BLFE4aPn5zUVpyaHdLanVnMTg/vagrant-archlinux-2013-8.box</td>
+            <td>394MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Archlinux 2011-08-19</th>
+            <td>VirtualBox</td>
+            <td>http://iweb.dl.sourceforge.net/project/vagrantarchlinx/2011.08.19/archlinux_2011.08.19.box</td>
+            <td>565MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Archlinux 2013-08-09</th>
+            <td>VirtualBox</td>
+            <td>https://downloads.sourceforge.net/project/vagrant-archlinux/vagrant-archlinux.box</td>
+            <td>512M</td>
+          </tr>
+          <tr>
+            <th scope="row">CentOS 5.6 32</th>
+            <td>VirtualBox</td>
+            <td>http://yum.mnxsolutions.com/vagrant/centos_56_32.box</td>
+            <td>804MB</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              CentOS 5.6 64 Packages
+              <br>
+              (puppet 2.6.10 &amp; chef 0.10.6 from RPM, VirtualBox 4.2.0)
+            </th>
+            <td>VirtualBox</td>
+            <td>https://dl.dropbox.com/u/7196/vagrant/CentOS-56-x64-packages-puppet-2.6.10-chef-0.10.6.box</td>
+            <td>420MB</td>
+          </tr>
+          <tr>
+            <th scope="row">CentOS 5.7 64</th>
+            <td>VirtualBox</td>
+            <td>http://www.lyricalsoftware.com/downloads/centos-5.7-x86_64.box</td>
+            <td>521MB</td>
+          </tr>
+          <tr>
+            <th scope="row">CentOS 5.8 x86_64</th>
+            <td>VirtualBox</td>
+            <td>https://dl.dropbox.com/u/17738575/CentOS-5.8-x86_64.box</td>
+            <td>957MB</td>
+          </tr>
+          <tr>
+            <th scope="row">CentOS 5.8 x86_64 minimal + guest additions, puppet, chef</th>
+            <td>VirtualBox</td>
+            <td>http://tag1consulting.com/files/centos-5.8-x86-64-minimal.box</td>
+            <td>349MB</td>
+          </tr>
+          <tr>
+            <th scope="row">CentOS 5.9 x86_64 minimal + guest additions, puppet, chef</th>
+            <td>VirtualBox</td>
+            <td>http://tag1consulting.com/files/centos-5.9-x86-64-minimal.box</td>
+            <td>356MB</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              CentOS 6.2 32bit
+              <br>
+              (puppet)
+            </th>
+            <td>VirtualBox</td>
+            <td>https://dl.dropbox.com/sh/9rldlpj3cmdtntc/56JW-DSK35/centos-62-32bit-puppet.box</td>
+            <td>501MB</td>
+          </tr>
+          <tr>
+            <th scope="row">CentOS 6.3 32bit (Ruby 1.8.7 &amp; Chef 10.14.2)</th>
+            <td>VirtualBox</td>
+            <td>http://tom.davidson.me.uk/dev/vagrant/centos63-32.box</td>
+            <td>443MB</td>
+          </tr>
+          <tr>
+            <th scope="row">CentOS 6.3 32bit (puppet)</th>
+            <td>VirtualBox</td>
+            <td>https://dl.dropbox.com/sh/9rldlpj3cmdtntc/chqwU6EYaZ/centos-63-32bit-puppet.box</td>
+            <td>651MB</td>
+          </tr>
+          <tr>
+            <th scope="row">CentOS 6.3 x86_64 + Chef 10.14.2 + VirtualBox 4.1.22 (with guest additions)</th>
+            <td>VirtualBox</td>
+            <td>https://s3.amazonaws.com/itmat-public/centos-6.3-chef-10.14.2.box</td>
+            <td>445MB</td>
+          </tr>
+          <tr>
+            <th scope="row">CentOS 6.3 x86_64 minimal</th>
+            <td>VirtualBox</td>
+            <td>https://dl.dropbox.com/u/7225008/Vagrant/CentOS-6.3-x86_64-minimal.box</td>
+            <td>310MB</td>
+          </tr>
+          <tr>
+            <th scope="row">CentOS 6.4 i386 Minimal (VirtualBox Guest Additions 4.2.16, Chef 11.6.0, Puppet 3.2.3)</th>
+            <td>VirtualBox</td>
+            <td>http://developer.nrel.gov/downloads/vagrant-boxes/CentOS-6.4-i386-v20130731.box</td>
+            <td>459MB</td>
+          </tr>
+          <tr>
+            <th scope="row">CentOS 6.4 x86_64 2013-07-01 --  With development tools (gcc, etc...). Works on VBox 4.2.14!</th>
+            <td>VirtualBox</td>
+            <td>http://shonky.info/centos64.box</td>
+            <td>519.1MB</td>
+          </tr>
+          <tr>
+            <th scope="row">CentOS 6.4 x86_64 Minimal (VirtualBox Guest Additions 4.2.16, Chef 11.6.0, Puppet 3.2.3)</th>
+            <td>VirtualBox</td>
+            <td>http://developer.nrel.gov/downloads/vagrant-boxes/CentOS-6.4-x86_64-v20130731.box</td>
+            <td>494MB</td>
+          </tr>
+          <tr>
+            <th scope="row">CentOS 6.4 x86_64 Minimal VMware Fusion (VMware Tools, Chef 11.4.0, Puppet 3.1.1)</th>
+            <td>VMware</td>
+            <td>https://dl.dropbox.com/u/5721940/vagrant-boxes/vagrant-centos-6.4-x86_64-vmware_fusion.box</td>
+            <td>545.94MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Debian 6 Squeeze x64 (VMware Fusion provider) configured according to documentation (<a href="https://github.com/jousch/vagrant-basebox-debian_squeeze64-vmware/blob/master/README.md">More Details</a>)</th>
+            <td>VMware</td>
+            <td>https://dl.dropbox.com/u/39133545/Publish/Vagrant/Provider/Vmware/vagrant-debian-squeeze64.box</td>
+            <td>334.9MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Debian 6 Squeeze x64 configured according to documentation</th>
+            <td>VirtualBox</td>
+            <td>http://www.emken.biz/vagrant-boxes/debsqueeze64.box</td>
+            <td>408MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Debian Squeeze 6.0.6 32 - Vanilla (No Ruby, no puppet, only Chef 10.14 from omnibus installer)</th>
+            <td>VirtualBox</td>
+            <td>https://dl.dropbox.com/u/2289657/squeeze32-vanilla.box</td>
+            <td>276MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Debian Squeeze 6.0.7 amd64 (french) with Puppet 3.1.1, Chef 11.4.0 and VirtualBox 4.2.12, built with Veewee 0.3.7 (2013/04/20)</th>
+            <td>VirtualBox</td>
+            <td>http://public.sphax3d.org/vagrant/squeeze64.box</td>
+            <td>294.19MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Debian Squeeze amd64 (Chef 10.24.4, Puppet 3.1.1, VirtualBox 4.2.12)</th>
+            <td>VirtualBox</td>
+            <td>https://dl.dropboxusercontent.com/u/13054557/vagrant_boxes/debian-squeeze.box</td>
+            <td>287MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Debian Squeeze amd64 (Puppet 3.2.3, LXC, 2013.07.27)</th>
+            <td>Vagrant-LXC</td>
+            <td>https://dl.dropboxusercontent.com/u/67225617/lxc-vagrant/lxc-squeeze64-puppet3-2013-07-27.box</td>
+            <td>106.17MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Debian Squeeze amd64 (with Puppet, Chef and VirtualBox 4.2.1)</th>
+            <td>VirtualBox</td>
+            <td>http://f.willianfernandes.com.br/vagrant-boxes/DebianSqueeze64.box</td>
+            <td>272MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Debian Squeeze amd64 (with VirtualBox 4.2.4)</th>
+            <td>VirtualBox</td>
+            <td>http://dl.dropbox.com/u/54390273/vagrantboxes/Squeeze64_VirtualBox4.2.4.box</td>
+            <td>372MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Debian Squeeze i386 6.0.7 (Chef 10.18.2, Puppet 2.6.2, VirtualBox 4.2.6, nfs-common 1.2.2)</th>
+            <td>VirtualBox</td>
+            <td>http://dl.dropbox.com/u/40989391/vagrant-boxes/debian-squeeze-i386.box</td>
+            <td>496.78MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Debian Wheezy 7.1 amd64 (french) with Chef 11.4.4 and VirtualBox 4.1.18 (2013/06/19)</th>
+            <td>VirtualBox</td>
+            <td>http://downloads.shadoware.org/wheezy64.box</td>
+            <td>388MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Debian Wheezy amd64 (Puppet 3.2.3, LXC, 2013.07.27)</th>
+            <td>Vagrant-LXC</td>
+            <td>https://dl.dropboxusercontent.com/u/67225617/lxc-vagrant/lxc-wheezy64-puppet3-2013-07-27.box</td>
+            <td>102.5MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Debian Wheezy amd64 (Puppet, VirtualBox)</th>
+            <td>VirtualBox</td>
+            <td>https://dl.dropboxusercontent.com/u/86066173/debian-wheezy.box</td>
+            <td>455MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Debian squeeze 32</th>
+            <td>VirtualBox</td>
+            <td>http://mathie-vagrant-boxes.s3.amazonaws.com/debian_squeeze_32.box</td>
+            <td>397MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Debian squeeze 64 (French (Swiss) keyboard layout)</th>
+            <td>VirtualBox</td>
+            <td>http://dl.dropbox.com/u/937870/VMs/squeeze64.box</td>
+            <td>264MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Fedora 17 i386 (Puppet, Chef, VirtualBox 4.2.6)</th>
+            <td>VirtualBox</td>
+            <td>http://dl.dropbox.com/u/6002490/vagrant/beefymiracle32.box</td>
+            <td>804.25MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Fedora 17 x86_64 (Puppet, Chef, VirtualBox 4.2.6)</th>
+            <td>VirtualBox</td>
+            <td>http://dl.dropbox.com/u/6002490/vagrant/beefymiracle64.box</td>
+            <td>768.49MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Fedora 18 x86 Minimal (with Chef 11.4.0, VirtualBox Guest Additions 4.2.10 and rpmfusion enabled);<br>
+              md5sum 36b8aaf49421510a726b6175ee44e15b<br>
+              sha1sum d5a6a3c4ab1538105b18e6efba4d9479798a430e</th>
+            <td>VirtualBox</td>
+            <td>http://static.stasiak.at/fedora-18-x86-2.box</td>
+            <td>635MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Fedora 19 x86_64 (Puppet, VirtualBox)</th>
+            <td>VirtualBox</td>
+            <td>https://dl.dropboxusercontent.com/u/86066173/fedora-19.box</td>
+            <td>400MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Funtoo 2013.06 amd64 (Chef omnibus 11.4.4, VirtualBox 4.2.12)</th>
+            <td>VirtualBox</td>
+            <td>https://lxmx-vm.s3.amazonaws.com/vagrant/boxes/lxmx_funtoo-2013.06_chef-11.4.4.box</td>
+            <td>467MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Gentoo 2013.02.14 i686 (32bit) (Puppet, Chef, VirtualBox 4.2.6)</th>
+            <td>VirtualBox</td>
+            <td>https://seedrs.box.com/shared/static/6cg94mkdtuz3baoy8zl8.box</td>
+            <td>717MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Gentoo 2013.05 amd64 (Chef omnibus 11.4.4, VirtualBox 4.2.12)</th>
+            <td>VirtualBox</td>
+            <td>https://lxmx-vm.s3.amazonaws.com/vagrant/boxes/lxmx_gentoo-2013.05_chef-11.4.4.box</td>
+            <td>357MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Heroku Celadon Cedar</th>
+            <td>VirtualBox</td>
+            <td>http://dl.dropbox.com/u/1906634/heroku.box</td>
+            <td>555MB</td>
+          </tr>
+          <tr><th scope="row">Kali Linux</th>
+            <td>VirtualBox</td>
+            <td>http://ftp.sliim-projects.eu/boxes/kali-linux-1.0-amd64.box</td>
+            <td>2500MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Kali Linux 1.0 i686</th>
+            <td>VirtualBox</td>
+            <td>http://dalvik.jp/vagrant/KaliLinux-1.0-en-i686.box</td>
+            <td>2346MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Minimal CentOS 5.6</th>
+            <td>VirtualBox</td>
+            <td>http://dl.dropbox.com/u/9227672/centos-5.6-x86_64-netinstall-4.1.6.box</td>
+            <td>277MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Minimal CentOS 6.0</th>
+            <td>VirtualBox</td>
+            <td>http://dl.dropbox.com/u/9227672/CentOS-6.0-x86_64-netboot-4.1.6.box</td>
+            <td>362MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Official Ubuntu 12.04 daily Cloud Image amd64 (VirtualBox 4.1.12)</th>
+            <td>VirtualBox</td>
+            <td>http://cloud-images.ubuntu.com/vagrant/precise/current/precise-server-cloudimg-amd64-vagrant-disk1.box</td>
+            <td>341M</td>
+          </tr>
+          <tr>
+            <th scope="row">Official Ubuntu 12.04 daily Cloud Image i386 (VirtualBox 4.1.12)</th>
+            <td>VirtualBox</td>
+            <td>http://cloud-images.ubuntu.com/vagrant/precise/current/precise-server-cloudimg-i386-vagrant-disk1.box</td>
+            <td>329M</td>
+          </tr>
+          <tr>
+            <th scope="row">Official Ubuntu 12.10 daily Cloud Image amd64 (No Guest Additions)</th>
+            <td>VirtualBox</td>
+            <td>http://cloud-images.ubuntu.com/vagrant/quantal/current/quantal-server-cloudimg-amd64-vagrant-disk1.box</td>
+            <td>298M</td>
+          </tr>
+          <tr>
+            <th scope="row">Official Ubuntu 12.10 daily Cloud Image i386 (No Guest Additions)</th>
+            <td>VirtualBox</td>
+            <td>http://cloud-images.ubuntu.com/vagrant/quantal/current/quantal-server-cloudimg-i386-vagrant-disk1.box</td>
+            <td>299M</td>
+          </tr>
+          <tr>
+            <th scope="row">Official Ubuntu 13.04 daily Cloud Image amd64 (No Guest Additions)</th>
+            <td>VirtualBox</td>
+            <td>http://cloud-images.ubuntu.com/vagrant/raring/current/raring-server-cloudimg-amd64-vagrant-disk1.box</td>
+            <td>303M</td>
+          </tr>
+          <tr>
+            <th scope="row">Official Ubuntu 13.04 daily Cloud Image i386 (No Guest Additions)</th>
+            <td>VirtualBox</td>
+            <td>http://cloud-images.ubuntu.com/vagrant/raring/current/raring-server-cloudimg-i386-vagrant-disk1.box</td>
+            <td>305M</td>
+          </tr>
+          <tr>
+            <th scope="row">Official Ubuntu 13.10 daily Cloud Image amd64 (Development release, No Guest Additions)</th>
+            <td>VirtualBox</td>
+            <td>http://cloud-images.ubuntu.com/vagrant/saucy/current/saucy-server-cloudimg-amd64-vagrant-disk1.box</td>
+            <td>309M</td>
+          </tr>
+          <tr>
+            <th scope="row">Official Ubuntu 13.10 daily Cloud Image i386 (Development release, No Guest Additions)</th>
+            <td>VirtualBox</td>
+            <td>http://cloud-images.ubuntu.com/vagrant/saucy/current/saucy-server-cloudimg-i386-vagrant-disk1.box</td>
+            <td>309M</td>
+          </tr>
+          <tr>
+            <th scope="row">OmniOS (r151002)</th>
+            <td>VirtualBox</td>
+            <td>http://omnios.omniti.com/media/omnios-latest.box</td>
+            <td>837MB</td>
+          </tr>
+          <tr>
+            <th scope="row">OpenBSD 5.0 (amd64) puppet chef pkg ports</th>
+            <td>VirtualBox</td>
+            <td>https://github.com/downloads/stefancocora/openbsd_amd64-vagrant/openbsd50_amd64.box</td>
+            <td>279.7MB</td>
+          </tr>
+          <tr>
+            <th scope="row">OpenBSD 5.0 (i386) puppet chef pkg ports</th>
+            <td>VirtualBox</td>
+            <td>https://github.com/downloads/stefancocora/openbsd_i386-vagrant/openbsd50_i386.box</td>
+            <td>266.3MB</td>
+          </tr>
+          <tr>
+            <th scope="row">OpenBSD 5.2 (amd64) puppet chef pkg ports</th>
+            <td>VirtualBox</td>
+            <td>https://dl.dropbox.com/s/5ietqc3thdholuh/openbsd-52-64.box</td>
+            <td>889MB</td>
+          </tr>
+          <tr>
+            <th scope="row">OpenBSD 5.3 64-bit</th>
+            <td>VirtualBox</td>
+            <td>https://dl.dropboxusercontent.com/u/12089300/VirtualBox/openbsd53_amd64.box</td>
+            <td>303MB</td>
+          </tr>
+          <tr>
+            <th scope="row">OpenBSD 5.3 64-bit (Vagrant 1.2)</th>
+            <td>VirtualBox</td>
+            <td>https://dl.dropboxusercontent.com/u/12089300/VirtualBox/openbsd53_amd64_vagrant12.box</td>
+            <td>296MB</td>
+          </tr>
+          <tr>
+            <th scope="row">OpenSuse 12.2 x86 (puppet)</th>
+            <td>VirtualBox</td>
+            <td>http://sourceforge.net/projects/opensusevagrant/files/12.2/opensuse-12.2-32.box/download</td>
+            <td>554MB</td>
+          </tr>
+          <tr>
+            <th scope="row">OpenSuse 12.2 x86_64 (puppet)</th>
+            <td>VirtualBox</td>
+            <td>http://sourceforge.net/projects/opensusevagrant/files/12.2/opensuse-12.2-64.box/download</td>
+            <td>552MB</td>
+          </tr>
+          <tr>
+            <th scope="row">OpenSuse 12.3 x86 (puppet)</th>
+            <td>VirtualBox</td>
+            <td>http://sourceforge.net/projects/opensusevagrant/files/12.3/opensuse-12.3-32.box/download</td>
+            <td>530MB</td>
+          </tr>
+          <tr>
+            <th scope="row">OpenSuse 12.3 x86_64 (puppet)</th>
+            <td>VirtualBox</td>
+            <td>http://sourceforge.net/projects/opensusevagrant/files/12.3/opensuse-12.3-64.box/download</td>
+            <td>628MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Opscode centos 5</th>
+            <td>VirtualBox</td>
+            <td>http://opscode-vagrant-boxes.s3.amazonaws.com/centos5-gems.box</td>
+            <td>458MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Opscode ubuntu 10.04</th>
+            <td>VirtualBox</td>
+            <td>http://opscode-vagrant-boxes.s3.amazonaws.com/ubuntu10.04-gems.box</td>
+            <td>367MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Oracle Linux 5.9 x86_64 (Chef + Puppet) (<a href="https://github.com/terrywang/vagrantboxes/blob/master/oracle59.md">src</a>)</th>
+            <td>VirtualBox</td>
+            <td>https://dl.dropbox.com/s/n5o3gfdgjc3ekhl/oracle59.box</td>
+            <td>613MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Oracle Linux 6.4 x86_64 (Chef + Puppet) (<a href="https://github.com/terrywang/vagrantboxes/blob/master/oracle64.md">src</a>)</th>
+            <td>VirtualBox</td>
+            <td>https://dl.dropbox.com/s/zmitpteca72sjpx/oracle64.box</td>
+            <td>612MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Puppetlabs CentOS 5.9 x86_64, VBox 4.2.10 (<a href="http://github.com/puppetlabs/puppet-vagrant-boxes">src</a>)</th>
+            <td>VirtualBox</td>
+            <td>http://puppet-vagrant-boxes.puppetlabs.com/centos-59-x64-vbox4210.box</td>
+            <td>530MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Puppetlabs CentOS 5.9 x86_64, VBox 4.2.10, No Puppet or Chef (<a href="http://github.com/puppetlabs/puppet-vagrant-boxes">src</a>)</th>
+            <td>VirtualBox</td>
+            <td>http://puppet-vagrant-boxes.puppetlabs.com/centos-59-x64-vbox4210-nocm.box</td>
+            <td>522MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Puppetlabs CentOS 6.4 x86_64, VBox 4.2.10 (<a href="http://github.com/puppetlabs/puppet-vagrant-boxes">src</a>)</th>
+            <td>VirtualBox</td>
+            <td>http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-vbox4210.box</td>
+            <td>523MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Puppetlabs CentOS 6.4 x86_64, VBox 4.2.10, No Puppet or Chef (<a href="http://github.com/puppetlabs/puppet-vagrant-boxes">src</a>)</th>
+            <td>VirtualBox</td>
+            <td>http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-vbox4210-nocm.box</td>
+            <td>521MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Puppetlabs Debian 6.0.7 x86_64, VBox 4.2.10 (<a href="http://github.com/puppetlabs/puppet-vagrant-boxes">src</a>)</th>
+            <td>VirtualBox</td>
+            <td>http://puppet-vagrant-boxes.puppetlabs.com/debian-607-x64-vbox4210.box</td>
+            <td>271MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Puppetlabs Debian 6.0.7 x86_64, VBox 4.2.10, No Puppet or Chef (<a href="http://github.com/puppetlabs/puppet-vagrant-boxes">src</a>)</th>
+            <td>VirtualBox</td>
+            <td>http://puppet-vagrant-boxes.puppetlabs.com/debian-607-x64-vbox4210-nocm.box</td>
+            <td>249MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Puppetlabs Debian 7.0rc1 x86_64, VBox 4.2.10 (<a href="http://github.com/puppetlabs/puppet-vagrant-boxes">src</a>)</th>
+            <td>VirtualBox</td>
+            <td>http://puppet-vagrant-boxes.puppetlabs.com/debian-70rc1-x64-vbox4210.box</td>
+            <td>302MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Puppetlabs Debian 7.0rc1 x86_64, VBox 4.2.10, No Puppet or Chef (<a href="http://github.com/puppetlabs/puppet-vagrant-boxes">src</a>)</th>
+            <td>VirtualBox</td>
+            <td>http://puppet-vagrant-boxes.puppetlabs.com/debian-70rc1-x64-vbox4210-nocm.box</td>
+            <td>281MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Puppetlabs Fedora 18 x86_64, VBox 4.2.10 (<a href="http://github.com/puppetlabs/puppet-vagrant-boxes">src</a>)</th>
+            <td>VirtualBox</td>
+            <td>http://puppet-vagrant-boxes.puppetlabs.com/fedora-18-x64-vbox4210.box</td>
+            <td>596MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Puppetlabs Fedora 18 x86_64, VBox 4.2.10, No Puppet or Chef (<a href="http://github.com/puppetlabs/puppet-vagrant-boxes">src</a>)</th>
+            <td>VirtualBox</td>
+            <td>http://puppet-vagrant-boxes.puppetlabs.com/fedora-18-x64-vbox4210-nocm.box</td>
+            <td>611MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Puppetlabs SLES 11sp1 x86_64, VBox 4.2.10 (<a href="http://github.com/puppetlabs/puppet-vagrant-boxes">src</a>)</th>
+            <td>VirtualBox</td>
+            <td>http://puppet-vagrant-boxes.puppetlabs.com/sles-11sp1-x64-vbox4210.box</td>
+            <td>519MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Puppetlabs SLES 11sp1 x86_64, VBox 4.2.10, No Puppet or Chef (<a href="http://github.com/puppetlabs/puppet-vagrant-boxes">src</a>)</th>
+            <td>VirtualBox</td>
+            <td>http://puppet-vagrant-boxes.puppetlabs.com/sles-11sp1-x64-vbox4210-nocm.box</td>
+            <td>500MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Puppetlabs Ubuntu 10.04.4 x86_64, VBox 4.2.10 (<a href="http://github.com/puppetlabs/puppet-vagrant-boxes">src</a>)</th>
+            <td>VirtualBox</td>
+            <td>http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-server-10044-x64-vbox4210.box</td>
+            <td>323MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Puppetlabs Ubuntu 10.04.4 x86_64, VBox 4.2.10, No Puppet or Chef (<a href="http://github.com/puppetlabs/puppet-vagrant-boxes">src</a>)</th>
+            <td>VirtualBox</td>
+            <td>http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-server-10044-x64-vbox4210-nocm.box</td>
+            <td>313MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Puppetlabs Ubuntu 12.04.2 x86_64, VBox 4.2.10 (<a href="http://github.com/puppetlabs/puppet-vagrant-boxes">src</a>)</th>
+            <td>VirtualBox</td>
+            <td>http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-server-12042-x64-vbox4210.box</td>
+            <td>400MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Puppetlabs Ubuntu 12.04.2 x86_64, VBox 4.2.10, No Puppet or Chef (<a href="http://github.com/puppetlabs/puppet-vagrant-boxes">src</a>)</th>
+            <td>VirtualBox</td>
+            <td>http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-server-12042-x64-vbox4210-nocm.box</td>
+            <td>352MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Scientific Linux 6 64 chefclient0.10</th>
+            <td>VirtualBox</td>
+            <td>http://download.frameos.org/sl6-64-chefclient-0.10.box</td>
+            <td>459MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Scientific Linux 6 64 chefserver-0.10</th>
+            <td>VirtualBox</td>
+            <td>http://download.frameos.org/sl6-64-chefserver-0.10.box</td>
+            <td>657MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Scientific Linux 6 64 minimal</th>
+            <td>VirtualBox</td>
+            <td>http://lyte.id.au/vagrant/sl6-64-lyte.box</td>
+            <td>376M</td>
+          </tr>
+          <tr>
+            <th scope="row">Severalnines ClusterControl, Database Cluster Deployment Scripts, VBox 4.2.10, Ubuntu 12.04 LTS (<a href="http://www.alexyu.se/content/2013/03/vagrant-box-severalnines-database-cluster-deployment-scripts">How-to</a>)</th>
+            <td>VirtualBox</td>
+            <td>https://googledrive.com/host/0B-J3zLLFd9HMLUhkckZBWi1xVlE/s9s_clustercontrol.box</td>
+            <td>390MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Slackware 13.37</th>
+            <td>VirtualBox</td>
+            <td>http://dl.dropbox.com/u/10544201/slackware-13.37.box</td>
+            <td>2200MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu 10.04.4 LTS Lucid x86_64 (Apache 2.2.14, PHP 5.3.2, MySQL 5.1.66)</th>
+            <td>VirtualBox</td>
+            <td>https://dl.dropbox.com/u/14741389/vagrantboxes/lucid64-lamp.box</td>
+            <td>343MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu 11.04 server amd64</th>
+            <td>VirtualBox</td>
+            <td>http://dl.dropbox.com/u/7490647/talifun-ubuntu-11.04-server-amd64.box</td>
+            <td>390MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu 11.04 server i386</th>
+            <td>VirtualBox</td>
+            <td>http://dl.dropbox.com/u/7490647/talifun-ubuntu-11.04-server-i386.box</td>
+            <td>372MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu 12.04 amd64 for vagrant-lxc with Puppet 3.1.1</th>
+            <td>Vagrant-LXC</td>
+            <td>http://dl.dropbox.com/u/13510779/lxc-precise-amd64-2013-07-12.box</td>
+            <td>94M</td>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu 12.04 server amd64 (Drupal Ready)</th>
+            <td>VirtualBox</td>
+            <td>http://ubuntuone.com/790qH5nb7cFe2CLQkGiTpz</td>
+            <td>702MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu 12.04.1 LTS x86_64 (Guest Additions 4.1.18)</th>
+            <td>VirtualBox</td>
+            <td>http://dl.dropbox.com/u/1537815/precise64.box</td>
+            <td>568MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu 12.04.2 AMD64 (Chef 11 installed via Omnibus; VirtualBox 4.2.6; Standard Puppet)</th>
+            <td>VirtualBox</td>
+            <td>http://grahamc.com/vagrant/ubuntu-12.04-omnibus-chef.box</td>
+            <td>372M</td>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu 12.04.2 Server amd64 for VMWare Fusion and Chef Omnibus 11</th>
+            <td>VMware</td>
+            <td>http://grahamc.com/vagrant/ubuntu-12.04.2-server-amd64-vmware-fusion.box</td>
+            <td>446M</td>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu 12.04.2 Server i386 with VirtualBox Guest Additions v4.2.6, Chef Omnibus 11</th>
+            <td>VirtualBox</td>
+            <td>http://grahamc.com/vagrant/ubuntu-12.04.2-i386-chef-11-omnibus.box</td>
+            <td>428M</td>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu 12.10 Quantal x86_64 (Guest Additions 4.2.2)</th>
+            <td>VirtualBox</td>
+            <td>https://github.com/downloads/roderik/VagrantQuantal64Box/quantal64.box</td>
+            <td>402MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu 12.10 amd64 for vagrant-lxc with Puppet 3.1.1</th>
+            <td>Vagrant-LXC</td>
+            <td>http://dl.dropbox.com/u/13510779/lxc-quantal-amd64-2013-07-12.box</td>
+            <td>94M</td>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu 13.04 amd64 for vagrant-lxc with Puppet 3.1.1</th>
+            <td>Vagrant-LXC</td>
+            <td>http://dl.dropbox.com/u/13510779/lxc-raring-amd64-2013-07-12.box</td>
+            <td>92M</td>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu Lucid32 lampp, mongodb, git</th>
+            <td>VirtualBox</td>
+            <td>http://www.hitarthindia.com/VM/lampp-mongo-git.box</td>
+            <td>566MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu Lucid32 lampp, mongodb, git, lithium, rockmongo</th>
+            <td>VirtualBox</td>
+            <td>http://www.hitarthindia.com/VM/lampp-mongo-git-lithium-rock.box</td>
+            <td>568MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu Maverick 64</th>
+            <td>VirtualBox</td>
+            <td>http://mathie-vagrant-boxes.s3.amazonaws.com/maverick64.box</td>
+            <td>515MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu Precise 32 (12.04.2) Vanilla (<a href="https://github.com/teohm/vanilla-boxes">source</a>)
+              <br>(vanilla = no ruby, gem, chef, puppet)
+            </th>
+            <td>VirtualBox</td>
+            <td>https://dl.dropboxusercontent.com/u/165709740/boxes/precise32-vanilla.box</td>
+            <td>408MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu Precise 64 (12.04.2) Vanilla (<a href="https://github.com/teohm/vanilla-boxes">source</a>)
+              <br>
+              (vanilla = no ruby, gem, chef, puppet)
+            </th>
+            <td>VirtualBox</td>
+            <td>https://dl.dropboxusercontent.com/u/165709740/boxes/precise64-vanilla.box</td>
+            <td>389MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu Quantal 32 (12.10) Vanilla (<a href="https://github.com/teohm/vanilla-boxes">source</a>)
+              <br>
+              (vanilla = no ruby, gem, chef, puppet)
+            </th>
+            <td>VirtualBox</td>
+            <td>https://dl.dropboxusercontent.com/u/165709740/boxes/quantal32-vanilla.box</td>
+            <td>379MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu Quantal 64 (12.10) Vanilla (<a href="https://github.com/teohm/vanilla-boxes">source</a>)
+              <br>
+              (vanilla = no ruby, gem, chef, puppet)
+            </th>
+            <td>VirtualBox</td>
+            <td>https://dl.dropboxusercontent.com/u/165709740/boxes/quantal64-vanilla.box</td>
+            <td>389MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu Raring 32 (13.04) Vanilla (<a href="https://github.com/teohm/vanilla-boxes">source</a>)
+              <br>
+              (vanilla = no ruby, gem, chef, puppet)
+            </th>
+            <td>VirtualBox</td>
+            <td>http://goo.gl/y79mW</td>
+            <td>353MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu Raring 64 (13.04) Vanilla (<a href="https://github.com/teohm/vanilla-boxes">source</a>)
+              <br>
+              (vanilla = no ruby, gem, chef, puppet)
+            </th>
+            <td>VirtualBox</td>
+            <td>http://goo.gl/ceHWg</td>
+            <td>405MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu Raring Ringtail (13.04) i386 Minimal (minimal = rvm, ruby-2.0.0p247, gem, chef, puppet)</th>
+            <td>VirtualBox</td>
+            <td>https://dl.dropboxusercontent.com/u/4387941/vagrant-boxes/ubuntu-13.04-mini-i386.box</td>
+            <td>420MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu Server 12.04 amd64 (with Puppet, Chef and VirtualBox 4.2.1)</th>
+            <td>VirtualBox</td>
+            <td>http://goo.gl/8kWkm</td>
+            <td>267MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu Server 12.04.1 i868 (VirtualBox 4.2.1)</th>
+            <td>VirtualBox</td>
+            <td>http://dl.dropbox.com/u/4031118/Vagrant/ubuntu-12.04.1-server-i686-virtual.box</td>
+            <td>389MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu Server 12.10 amd64 Minimal (VirtualBox 4.2.6)</th>
+            <td>VirtualBox</td>
+            <td>http://goo.gl/wxdwM</td>
+            <td>354MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu Server 13.04 x64 Raring Ringtail (VirtualBox Guest Additions 4.2.12, Chef 11.4.4, Puppet 2.7.18)</th>
+            <td>VirtualBox</td>
+            <td>http://goo.gl/Y4aRr</td>
+            <td>498MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu Server Precise 12.04.3 amd64
+              <br>
+              Kernel is ready for Docker (Docker not included)
+            </th>
+            <td>Virtualbox</td>
+            <td>http://nitron-vagrant.s3-website-us-east-1.amazonaws.com/vagrant_ubuntu_12.04.3_amd64_virtualbox.box</td>
+            <td>380MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu Server Precise 12.04.3 amd64
+              <br>
+              Kernel is ready for Docker (Docker not included)
+            </th>
+            <td>VMware</td>
+            <td>http://nitron-vagrant.s3-website-us-east-1.amazonaws.com/vagrant_ubuntu_12.04.3_amd64_vmware.box</td>
+            <td>447MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu Server raring 13.04 amd64
+              <br>
+              (ruby 1.9.3, puppet, guest additions)
+            </th>
+            <td>VirtualBox</td>
+            <td>https://dl.dropboxusercontent.com/u/547671/thinkstack-raring64.box</td>
+            <td>644MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu Server raring 13.04 amd64 (ruby-2.0.0-247 only)
+              <br>
+              MySQL headers already included for building mysql2 extension
+            </th>
+            <td>VirtualBox</td>
+            <td>https://dl.dropboxusercontent.com/s/o5i10hcu57jamg8/ubuntu64-ruby2.box</td>
+            <td>729MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu lucid 32</th>
+            <td>VirtualBox</td>
+            <td>http://files.vagrantup.com/lucid32.box</td>
+            <td>261MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu lucid 64</th>
+            <td>VirtualBox</td>
+            <td>http://files.vagrantup.com/lucid64.box</td>
+            <td>280MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu precise 32 VirtualBox</th>
+            <td>VirtualBox</td>
+            <td>http://files.vagrantup.com/precise32.box</td>
+            <td>299MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu precise 64 (Nginx, PHP, Mongo, Elasticsearch, Beanstalkd, Supervisor)</th>
+            <td>VirtualBox</td>
+            <td>http://labs.jiabin.net/vagrant/precise64-npembs.box</td>
+            <td>644MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu precise 64 (Ruby 1.9.3 &amp; Chef 10.12)</th>
+            <td>VirtualBox</td>
+            <td>https://dl.dropbox.com/u/14292474/vagrantboxes/precise64-ruby-1.9.3-p194.box</td>
+            <td>892MB</td>
+          </tr>
+          <tr>
             <th scope="row">Ubuntu precise 64 VMWare</th>
             <td>VMware</td>
             <td>http://files.vagrantup.com/precise64_vmware.box</td>
             <td>321MB</td>
-        </tr>
-        <tr>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu precise 64 VirtualBox</th>
+            <td>VirtualBox</td>
+            <td>http://files.vagrantup.com/precise64.box</td>
+            <td>323MB</td>
+          </tr>
+          <tr>
+            <th scope="row">Ubuntu precise 64 with some perl dependencies and few other essentials</th>
+            <td>VirtualBox</td>
+            <td>https://dl.dropbox.com/u/5595111/precise64-kohadeps.box</td>
+            <td>413MB</td>
+          </tr>
+          <tr>
             <th scope="row">Ubuntu raring 64 VMWare</th>
             <td>VMware</td>
             <td>https://s3.amazonaws.com/life360-vagrant/raring64.box</td>
             <td>393MB</td>
-        </tr>
+          </tr>
+          <tr>
+            <th scope="row">openSUSE 12.1 x64</th>
+            <td>VirtualBox</td>
+            <td>https://github.com/jtperry/OpenSuseVagrantBox</td>
+            <td>665MB</td>
+          </tr>
+          <tr>
+            <th scope="row">openSUSE 12.3 (x64) puppet chef (<a href="https://github.com/mapleoin/openSUSE-vagrant-box">Details</a>)</th>
+            <td>VirtualBox</td>
+            <td>http://bit.ly/openSUSE-12-3-virtualbox-box</td>
+            <td>527MB</td>
+          </tr>
+        </tbody>
+        <tfoot></tfoot>
+      </table>
 
-        <tr>
-          <th scope="row">Ubuntu precise 64 (Ruby 1.9.3 &amp; Chef 10.12)</th>
-          <td>VirtualBox</td>
-          <td>https://dl.dropbox.com/u/14292474/vagrantboxes/precise64-ruby-1.9.3-p194.box</td>
-          <td>892MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Ubuntu precise 64 (Nginx, PHP, Mongo, Elasticsearch, Beanstalkd, Supervisor)</th>
-          <td>VirtualBox</td>
-          <td>http://labs.jiabin.net/vagrant/precise64-npembs.box</td>
-          <td>644MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Ubuntu precise 64 with some perl dependencies and few other essentials</th>
-          <td>VirtualBox</td>
-          <td>https://dl.dropbox.com/u/5595111/precise64-kohadeps.box</td>
-          <td>413MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Ubuntu Server 12.04 amd64 (with Puppet, Chef and VirtualBox 4.2.1)</th>
-          <td>VirtualBox</td>
-          <td>http://goo.gl/8kWkm</td>
-          <td>267MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Ubuntu Server 12.04.1 i868 (VirtualBox 4.2.1)</th>
-          <td>VirtualBox</td>
-          <td>http://dl.dropbox.com/u/4031118/Vagrant/ubuntu-12.04.1-server-i686-virtual.box</td>
-          <td>389MB</td>
-        </tr>
-        <tr>
-          <th scope="row">Ubuntu 12.04.2 AMD64 (Chef 11 installed via Omnibus; VirtualBox 4.2.6; Standard Puppet)</th>
-          <td>VirtualBox</td>
-          <td>http://grahamc.com/vagrant/ubuntu-12.04-omnibus-chef.box</td>
-          <td>372M</td>
-        </tr>
-        <tr>
-          <th scope="row">Ubuntu Server 12.10 amd64 Minimal (VirtualBox 4.2.6)</th>
-          <td>VirtualBox</td>
-          <td>http://goo.gl/wxdwM</td>
-          <td>354MB</td>
-        </tr>
-      <tr>
-        <th scope="row">Ubuntu Precise 32 (12.04.2) Vanilla (<a href="https://github.com/teohm/vanilla-boxes">source</a>)
-          <br>(vanilla = no ruby, gem, chef, puppet)
-        </th>
-        <td>VirtualBox</td>
-        <td>https://dl.dropboxusercontent.com/u/165709740/boxes/precise32-vanilla.box</td>
-        <td>408MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Ubuntu Precise 64 (12.04.2) Vanilla (<a href="https://github.com/teohm/vanilla-boxes">source</a>)
-          <br>
-          (vanilla = no ruby, gem, chef, puppet)
-        </th>
-        <td>VirtualBox</td>
-        <td>https://dl.dropboxusercontent.com/u/165709740/boxes/precise64-vanilla.box</td>
-        <td>389MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Ubuntu Quantal 32 (12.10) Vanilla (<a href="https://github.com/teohm/vanilla-boxes">source</a>)
-          <br>
-          (vanilla = no ruby, gem, chef, puppet)
-        </th>
-        <td>VirtualBox</td>
-        <td>https://dl.dropboxusercontent.com/u/165709740/boxes/quantal32-vanilla.box</td>
-        <td>379MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Ubuntu Quantal 64 (12.10) Vanilla (<a href="https://github.com/teohm/vanilla-boxes">source</a>)
-          <br>
-          (vanilla = no ruby, gem, chef, puppet)
-        </th>
-        <td>VirtualBox</td>
-        <td>https://dl.dropboxusercontent.com/u/165709740/boxes/quantal64-vanilla.box</td>
-        <td>389MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Ubuntu Raring 32 (13.04) Vanilla (<a href="https://github.com/teohm/vanilla-boxes">source</a>)
-          <br>
-          (vanilla = no ruby, gem, chef, puppet)
-        </th>
-        <td>VirtualBox</td>
-        <td>http://goo.gl/y79mW</td>
-        <td>353MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Ubuntu Raring 64 (13.04) Vanilla (<a href="https://github.com/teohm/vanilla-boxes">source</a>)
-          <br>
-          (vanilla = no ruby, gem, chef, puppet)
-        </th>
-        <td>VirtualBox</td>
-        <td>http://goo.gl/ceHWg</td>
-        <td>405MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Ubuntu Server raring 13.04 amd64
-          <br>
-          (ruby 1.9.3, puppet, guest additions)
-        </th>
-        <td>VirtualBox</td>
-        <td>https://dl.dropboxusercontent.com/u/547671/thinkstack-raring64.box</td>
-        <td>644MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Ubuntu Server raring 13.04 amd64 (ruby-2.0.0-247 only)
-          <br>
-          MySQL headers already included for building mysql2 extension
-        </th>
-        <td>VirtualBox</td>
-        <td>https://dl.dropboxusercontent.com/s/o5i10hcu57jamg8/ubuntu64-ruby2.box</td>
-        <td>729MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Ubuntu Server 13.04 x64 Raring Ringtail (VirtualBox Guest Additions 4.2.12, Chef 11.4.4, Puppet 2.7.18)</th>
-        <td>VirtualBox</td>
-        <td>http://goo.gl/Y4aRr</td>
-        <td>498MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Ubuntu Server Precise 12.04.3 amd64
-          <br>
-          Kernel is ready for Docker (Docker not included)
-        </th>
-        <td>VMware</td>
-        <td>http://nitron-vagrant.s3-website-us-east-1.amazonaws.com/vagrant_ubuntu_12.04.3_amd64_vmware.box</td>
-        <td>447MB</td>
-      </tr>
-      <tr>
-        <th scope="row">Ubuntu Server Precise 12.04.3 amd64
-          <br>
-          Kernel is ready for Docker (Docker not included)
-        </th>
-        <td>Virtualbox</td>
-        <td>http://nitron-vagrant.s3-website-us-east-1.amazonaws.com/vagrant_ubuntu_12.04.3_amd64_virtualbox.box</td>
-        <td>380MB</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div id="footer">
-    <p>A project from <a href="http://morethanseven.net">Gareth Rushgrove</a>. The design of this site is heavily inspired by the lovely <a href="http://vagrantup.com">Vagrant</a> design by <a href="http://www.simonecarletti.com/">Simone Carletti</a>.</p>
-  </div>
-
-</div>
-
-</body>
+      <div id="footer">
+        <p>A project from <a href="http://morethanseven.net">Gareth Rushgrove</a>. The design of this site is heavily inspired by the lovely <a href="http://vagrantup.com">Vagrant</a> design by <a href="http://www.simonecarletti.com/">Simone Carletti</a>.</p>
+      </div>
+    </div>
+  </body>
+</html>
