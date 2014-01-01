@@ -51,7 +51,23 @@
       $(window).resize(function() {
         clip.reposition();
       });
+
+      $(".provider-filter").on("change", applyFilters);
+      $(".os-filter").on("change", applyFilters);
     });
+
+    function applyFilters()
+    {
+      $("tr").show();
+      var providerFilter = $(".provider-filter").val();
+      if(providerFilter !== "")
+        $("tr>td:nth-child(2):not(:contains('" + providerFilter + "'))").closest("tr").hide();
+      var osFilter = $(".os-filter").val();
+      if(osFilter !== "")
+        $("th[scope='row']:not(:contains('" + osFilter + "'))").closest("tr").hide();
+    }
+
+
   </script>
   <style>
    .zeroclipboard-button {
@@ -93,6 +109,25 @@
 
     <p>The list of boxes was last updated on December 12th, 2013.</p>
 
+    <label for="providerFilter">Provider</label>
+    <select name="providerFilter" class="provider-filter">
+      <option value="">All</option>
+      <option value="VMware">VMware</option>
+      <option value="VirtualBox">VirtualBox</option>
+      <option value="Vagrant-LXC">Vagrant-LXC</option>
+    </select>
+    <label for="osFilter">Operating system</label>
+    <select name="osFilter" class="os-filter">
+      <option value="">All</option>
+      <option value="Arch">Arch</option>
+      <option value="CentOS">CentOS</option>
+      <option value="Debian">Debian</option>
+      <option value="FreeBSD">FreeBSD</option>
+      <option value="Gentoo">Gentoo</option>
+      <option value="OpenBSD">OpenBSD</option>
+      <option value="Oracle">Oracle Linux</option>
+      <option value="Ubuntu">Ubuntu</option>
+    </select>
     <table class="sortable">
       <thead>
         <tr><th>Name</th><th>Provider</th><th>URL</th><th class="sorttable_numeric">Size</th></tr>
@@ -602,14 +637,14 @@
           <td>309M</td>
         </tr>
         <tr>
-          <th scope="row">Ubuntu 13.10 amd64 for VMWare (with Chef, ruby1.9.3 and vmware-tools)</th>
-          <td>VMWare</td>
+          <th scope="row">Ubuntu 13.10 amd64 for VMware (with Chef, ruby1.9.3 and vmware-tools)</th>
+          <td>VMware</td>
           <td>http://brennovich.s3.amazonaws.com/saucy64_vmware_fusion.box</td>
           <td>536M</td>
         </tr>
         <tr>
           <th scope="row">Ubuntu Server 13.10 amd64 (Chef 11.8.0, VMware tools)</th>
-          <td>VMWare</td>
+          <td>VMware</td>
           <td>http://shopify-vagrant.s3.amazonaws.com/ubuntu-13.10_vmware.box</td>
           <td>501MB</td>
         </tr>
@@ -926,7 +961,7 @@
           <td>428M</td>
         </tr>
         <tr>
-          <th scope="row">Ubuntu 12.04.2 Server amd64 for VMWare Fusion and Chef Omnibus 11</th>
+          <th scope="row">Ubuntu 12.04.2 Server amd64 for VMware Fusion and Chef Omnibus 11</th>
           <td>VMware</td>
           <td>http://grahamc.com/vagrant/ubuntu-12.04.2-server-amd64-vmware-fusion.box</td>
           <td>446M</td>
@@ -980,13 +1015,13 @@
           <td>323MB</td>
         </tr>
         <tr>
-            <th scope="row">Ubuntu precise 64 VMWare</th>
+            <th scope="row">Ubuntu precise 64 VMware</th>
             <td>VMware</td>
             <td>http://files.vagrantup.com/precise64_vmware.box</td>
             <td>321MB</td>
         </tr>
         <tr>
-            <th scope="row">Ubuntu raring 64 VMWare</th>
+            <th scope="row">Ubuntu raring 64 VMware</th>
             <td>VMware</td>
             <td>https://s3.amazonaws.com/life360-vagrant/raring64.box</td>
             <td>393MB</td>
@@ -1084,7 +1119,7 @@
           <br>
           Kernel is ready for Docker (Docker not included)
         </th>
-        <td>Virtualbox</td>
+        <td>VirtualBox</td>
         <td>http://nitron-vagrant.s3-website-us-east-1.amazonaws.com/vagrant_ubuntu_12.04.3_amd64_virtualbox.box</td>
         <td>380MB</td>
       </tr>
@@ -1102,7 +1137,7 @@
           <br>
           Kernel is ready for Docker (Docker not included)
         </th>
-        <td>Virtualbox</td>
+        <td>VirtualBox</td>
         <td>https://oss-binaries.phusionpassenger.com/vagrant/boxes/ubuntu-12.04.3-amd64-vbox.box</td>
         <td>547MB</td>
       </tr>
