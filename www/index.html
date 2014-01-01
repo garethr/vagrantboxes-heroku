@@ -51,7 +51,17 @@
       $(window).resize(function() {
         clip.reposition();
       });
+
+      $(".provider-filter").change(applyFilters);
     });
+
+    function applyFilters()
+    {
+      $("tr").show();
+      $("tr>td:nth-child(2):not(:contains('" + $(".provider-filter").val() + "'))").closest("tr").hide();
+    }
+
+
   </script>
   <style>
    .zeroclipboard-button {
@@ -93,6 +103,13 @@
 
     <p>The list of boxes was last updated on December 12th, 2013.</p>
 
+    <label for="providerFilter">Provider</label>
+    <select name="providerFilter" class="provider-filter">
+      <option value="All">All</option>
+      <option value="VMWare">VMWare</option>
+      <option value="VirtualBox">VirtualBox</option>
+      <option value="Vagrant-LXC">Vagrant-LXC</option>
+    </select>
     <table class="sortable">
       <thead>
         <tr><th>Name</th><th>Provider</th><th>URL</th><th class="sorttable_numeric">Size</th></tr>
