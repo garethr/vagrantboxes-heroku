@@ -5,63 +5,22 @@
   <link rel="stylesheet" href="assets/css/main.css" type="text/css" />
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+  <script src="assets/app.js"></script>
+  <script src="assets/services.js"></script>
   <script src="assets/controller.js"></script>
-  <link rel="stylesheet" href="assets/css/tipsy.css" type="text/css">
-  <style>
-   .zeroclipboard-button {
-      text-align:center;
-      background-color: #eeeeee;
-      border: 1px solid gray;
-    }
 
-    .zeroclipboard-button.zeroclipboard-is-hover { background-color: #dddddd; }
-    .zeroclipboard-button.zeroclipboard-is-active { background-color: #aaaaaa; }
-  </style>
-  
-<style id="jsbin-css">
-.ng-modal-overlay {
-  /* A dark translucent div that covers the whole screen */
-  position:absolute;
-  z-index:9999;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background-color:#000000;
-  opacity: 0.8;
-}
-.ng-modal-dialog {
-  /* A centered div above the overlay with a box shadow. */
-  z-index:10000;
-  position: absolute;
-  width: 50%; /* Default */
+  <script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-435455-15']);
+    _gaq.push(['_trackPageview']);
+    _gaq.push(['_trackPageLoadTime']);
 
-  /* Center the dialog */
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-
-  background-color: #fff;
-  box-shadow: 4px 4px 80px #000;
-}
-.ng-modal-dialog-content {
-  padding:10px;
-  text-align: left;
-}
-.ng-modal-close {
-  position: absolute;
-  top: 3px;
-  right: 5px;
-  padding: 5px;
-  cursor: pointer;
-  font-size: 120%;
-  display: inline-block;
-  font-weight: bold;
-  font-family: 'arial', 'sans-serif';
-}
-</style>  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>  
 </head>
 
 <body ng-app="VagrantBoxes">
@@ -91,29 +50,85 @@
 </pre>
 
     <p>The list of boxes was last updated on May 20th, 2014.</p>
-    
-    Search: <input ng-model="searchText">
-    <table class="sortable" ng-controller="boxesController">
-      <thead>
-        <tr>
-          <th>#num</th>
-    	  <th><a href="" ng-click="predicate = 'name'; reverse=!reverse">Name</a></th>
-    	  <th><a href="" ng-click="predicate = 'provider'; reverse=!reverse">Provider</a></th>
-    	  <th><a href="" ng-click="predicate = 'url'; reverse=!reverse">URL</a></th>
-    	  <th><a href="" ng-click="predicate = 'size'; reverse=!reverse">Size</a></th>
-    	</tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="box in boxList | filter:searchText | orderBy:predicate:reverse">
-          <td>{{$index + 1}}</td>
-          <td><a href="" ng-click="toggleModal()">{{box.name}}</a></td>
-          <td>{{box.provider}}</td>
-          <td>{{box.url}}</td>
-          <td>{{box.size}}</td>
-        </tr>
-    </tbody>
-  </table>
+  
+    <div ng-controller="boxesController">  
+        Search: <input ng-model="searchText">
 
+        <table class="sortable">
+          <thead>
+            <tr>
+              <th>#num</th>
+        	  <th><a href="" ng-click="predicate = 'name'; reverse=!reverse">Name</a></th>
+        	  <th><a href="" ng-click="predicate = 'provider'; reverse=!reverse">Provider</a></th>
+        	  <th><a href="" ng-click="predicate = 'url'; reverse=!reverse">URL</a></th>
+        	  <th><a href="" ng-click="predicate = 'size'; reverse=!reverse">Size</a></th>
+        	</tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="box in boxList | filter:searchText | orderBy:predicate:reverse">
+              <td>{{$index + 1}}</td>
+              <td><a href="" ng-click="toggleModal(box)">{{box.name}}</a></td>
+              <td>{{box.provider}}</td>
+              <td>{{box.url}}</td>
+              <td>{{box.size}}</td>
+            </tr>
+        </tbody>
+      </table>
+
+      <modal-dialog show='modalShown' width='600px' height='60%'>
+        <p>BOX Info<p>
+        <table class="sortable">
+          <thead>
+            <tr>
+              <th width="30%">Field</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Name</td>
+              <td>{{actualBox.name}}</td>
+            </tr>
+            <tr>
+              <td>SO Bits</td>
+              <td>{{actualBox.bits}}</td>
+            </tr>
+            <tr>
+              <td>Administrator</td>
+              <td>{{actualBox.administrator}}</td>
+            </tr>
+            <tr>
+              <td>Vagrant Version</td>
+              <td>{{actualBox.vagrant}}</td>
+            </tr>
+            <tr>
+              <td>Provider</td>
+              <td>{{actualBox.provider}}</td>
+            </tr>
+            <tr>
+              <td>Services</td>
+              <td>
+                  <ul>
+                      <li ng-repeat="srv in actualBox.services">{{srv}}</li>
+                  </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Language</td>
+              <td>{{actualBox.language}}</td>
+            </tr>
+            <tr>
+              <td>Size</td>
+              <td>{{actualBox.size}}</td>
+            </tr>
+            <tr>
+              <td>Date</td>
+              <td>{{actualBox.date}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </modal-dialog>
+  </div>
     
   <div id="footer">
     <p>A project from <a href="http://morethanseven.net">Gareth Rushgrove</a>. The design of this site is heavily inspired by the lovely <a href="http://vagrantup.com">Vagrant</a> design by <a href="http://www.simonecarletti.com/">Simone Carletti</a>.</p>
