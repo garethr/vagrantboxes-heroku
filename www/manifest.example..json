@@ -1,0 +1,16 @@
+[{
+    "by": "tryke",
+    "name": "Debian 7.3.0 64-bit Puppet 3.4.1 (Vagrant 1.4.0)",
+    "bits": "64-bit",
+    "administrator": "Puppet 3.4.1",
+    "vagrant": "Vagrant 1.4.0",
+    "provider": "VirtualBox 4.3.6",
+    "services": [
+                    "Apache/2.2.22",
+                    "PHP 5.4.6-1ubuntu1.8"
+                ],
+    "language": "ES",
+    "url": "https://dl.dropboxusercontent.com/u/29173892/vagrant-boxes/debian7.3.0-vbox4.3.6-puppet3.4.1.box",
+    "size": "682",
+    "date": "2013-08-01"            
+}]
