@@ -3,11 +3,12 @@
   <meta charset="utf-8">
   <title>A list of base boxes for Vagrant - Vagrantbox.es</title>
   <link rel="stylesheet" href="assets/css/main.css" type="text/css" />
-  <script src="assets/sorttable.js"></script>
   <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
   <script src="assets/ZeroClipboard.min.js"></script>
-  <script type='text/javascript' src='assets/jquery.tipsy.js'></script>
+  <script type="text/javascript" src="assets/jquery.tipsy.js"></script>
   <link rel="stylesheet" href="assets/css/tipsy.css" type="text/css">
+  <script src="http://cdn.datatables.net/1.10.0/js/jquery.dataTables.js"></script>
+  <link rel="stylesheet" href="http://cdn.datatables.net/1.10.0/css/jquery.dataTables.css" type="text/css" />
 
   <script>
     var _gaq = _gaq || [];
@@ -51,6 +52,21 @@
       $(window).resize(function() {
         clip.reposition();
       });
+
+      var table = $('#dataTable').dataTable({
+
+        // no sorting by default
+        // https://datatables.net/examples/basic_init/table_sorting.html
+        order: [],
+
+        // infinite scroll in y direction
+        // http://datatables.net/examples/basic_init/scroll_y.html
+        scrollY: "400px",
+        paging: false,
+        scrollCollapse: true,
+
+      });
+
     });
   </script>
   <style>
@@ -93,9 +109,9 @@
 
     <p>The list of boxes was last updated on May 20th, 2014.</p>
 
-    <table class="sortable">
+    <table id="dataTable" class="sortable">
       <thead>
-        <tr><th>Name</th><th>Provider</th><th>URL</th><th class="sorttable_numeric">Size</th></tr>
+        <tr><th>Name</th><th>Provider</th><th>URL</th><th>Size</th></tr>
       </thead>
       <tbody>
          <tr>
@@ -846,6 +862,7 @@
           <th scope="row">Oracle Linux 5.9 i386 VBox 4.2.16 puppet chef (<a href="https://sites.google.com/a/stoilis.gr/oracle-linux-vagrant-boxes/home">src</a>)</th>
 	  <td>VirtualBox</td>
           <td>https://storage.us2.oraclecloud.com/v1/istoilis-istoilis/vagrant/oracle59-32.box</td>
+	  <td>412MB</td>
         </tr>
         <tr>
           <th scope="row">Opscode centos-5.10-i386</th>
