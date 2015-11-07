@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <title>A list of base boxes for Vagrant - Vagrantbox.es</title>
   <link rel="stylesheet" href="assets/css/main.css" type="text/css" />
-  <link rel="stylesheet" href="assets/css/tipsy.css" type="text/css">
+  <link rel="stylesheet" href="assets/css/primer.css" type="text/css" />
   <link rel="stylesheet" href="//cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css" type="text/css" />
   <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
-  <script src="assets/ZeroClipboard.min.js"></script>
-  <script src="assets/jquery.tipsy.js"></script>
+  <script src="assets/clipboard.min.js"></script>
+  <script src="assets/tooltips.js"></script>
   <script src="//cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
 
   <script>
@@ -23,37 +23,22 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
 
-    ZeroClipboard.setDefaults({moviePath: 'assets/ZeroClipboard.swf'});
-
     $(document).ready(function() {
       $('td').each(function(i, e) {
         var content = $(e).html();
         if(content.indexOf('http') == 0) {
           var url = content;
-          content = '<button class="zeroclipboard-button" data-clipboard-text="' + url + '" trigger-title="Done" title="Copy to clipboard">Copy</button> ' + url;
+          content = '<button class="clipboard-button" data-clipboard-text="' + url + '" title="Copy to clipboard">Copy</button> ' + url;
           $(e).html(content);
         }
       });
 
-      var clip = new ZeroClipboard($('.zeroclipboard-button'));
-      clip.on('load', function(client, args) {
-        $(client.htmlBridge).tipsy();
+      var clipboard = new Clipboard('.clipboard-button');
+      
+      clipboard.on('success',function(e) {
+        showTooltip(e.trigger, 'Copied!');
       });
-
-      clip.on('noflash wrongflash', function(client, args) {
-        $('.zeroclipboard-button').hide();
-      });
-
-      clip.on('complete', function(client, args) {
-        var b = $(client.htmlBridge);
-        b.prop('title', $(this).attr('trigger-title'));
-        b.tipsy('show');
-      });
-
-      $(window).resize(function() {
-        clip.reposition();
-      });
-
+      
       var table = $('#dataTable').dataTable({
         order: [],
         paging: false,
@@ -62,14 +47,14 @@
     });
   </script>
   <style>
-   .zeroclipboard-button {
+   .clipboard-button {
       text-align:center;
       background-color: #eeeeee;
       border: 1px solid gray;
     }
 
-    .zeroclipboard-button.zeroclipboard-is-hover { background-color: #dddddd; }
-    .zeroclipboard-button.zeroclipboard-is-active { background-color: #aaaaaa; }
+    .clipboard-button:hover { background-color: #dddddd; }
+    .clipboard-button:active { background-color: #aaaaaa;}
   </style>
 </head>
 
