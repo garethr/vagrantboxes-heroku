@@ -34,11 +34,11 @@
       });
 
       var clipboard = new Clipboard('.clipboard-button');
-      
+
       clipboard.on('success',function(e) {
         showTooltip(e.trigger, 'Copied!');
       });
-      
+
       var table = $('#dataTable').dataTable({
         order: [],
         paging: false,
@@ -1510,6 +1510,12 @@
           <td>VirtualBox</td>
           <td>https://github.com/downloads/roderik/VagrantQuantal64Box/quantal64.box</td>
           <td>402</td>
+        </tr>
+        <tr>
+        	<td>Ubuntu 14.04.5 LTS (Trusty Tahr) server amd64 (Guest Additions 5.1.6) [<a href="https://github.com/sepetrov/trusty64/tree/v0.0.5" target="_blank" title="Packer template for Ubuntu Server 14.04.5 LTS (Trusty Tahr) VirtualBox box">source</a>]</td>
+        	<td>VirtualBox</td>
+        	<td>https://github.com/sepetrov/trusty64/releases/download/v0.0.5/trusty64.box</td>
+        	<td>712</td>
         </tr>
         <tr>
           <td>Ubuntu lucid 32</td>
